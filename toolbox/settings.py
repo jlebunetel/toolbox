@@ -2,9 +2,27 @@
 from pathlib import Path
 from typing import Any
 
-DEBUG: bool = True
-SECRET_KEY: str = "django-insecure-g92(90oj@eeh6fbs92=i2+m3n7$_&(j+b(hp0ir!s1+z51e3nw"
-ALLOWED_HOSTS: list[str] = ["127.0.0.1"]
+from django.core.management.utils import get_random_secret_key
+from pydantic import Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class Settings(BaseSettings):
+    """Load settings from environment variables or secrets files."""
+
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+
+    debug: bool = False
+    secret_key: str = Field(default_factory=get_random_secret_key)
+    allowed_hosts: list[str] = [".localhost", "127.0.0.1", "[::1]"]
+    language_code: str = "en"
+
+
+settings = Settings()
+
+DEBUG: bool = settings.debug
+SECRET_KEY: str = settings.secret_key
+ALLOWED_HOSTS: list[str] = settings.allowed_hosts
 BASE_DIR: Path = Path(__file__).resolve().parent.parent
 ROOT_URLCONF: str = "toolbox.urls"
 WSGI_APPLICATION: str = "toolbox.wsgi.application"
@@ -67,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS: list[dict[str, str]] = [
     },
 ]
 
-LANGUAGE_CODE: str = "en"
+LANGUAGE_CODE: str = settings.language_code
 TIME_ZONE: str = "UTC"
 USE_I18N: bool = True
 USE_TZ: bool = True

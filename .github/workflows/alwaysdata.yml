@@ -1,0 +1,33 @@
+name: Deploy on alwaysdata
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: "startsWith(github.event.head_commit.message, 'bump:')"
+    runs-on: ubuntu-latest
+    name: "Deploy on alwaysdata"
+    steps:
+      - name: Check out
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ALWAYSDATA_HOST }}
+          username: ${{ secrets.ALWAYSDATA_USERNAME }}
+          key: ${{ secrets.ALWAYSDATA_SSH_KEY }}
+          script_stop: true
+          script: |
+            cd ${{ secrets.ALWAYSDATA_PATH }}
+            git pull
+            make clean
+            rm -rf venv
+            PYTHON_VERSION=3.12 python -m venv venv
+            make install
+            venv/bin/python manage.py migrate
+      - name: Restart WSGI server
+        env:
+          APIKEY: ${{ secrets.ALWAYSDATA_APIKEY }}
+          SITE: ${{ secrets.ALWAYSDATA_SITE }}
+        run: curl -X POST --basic --user "$APIKEY:" https://api.alwaysdata.com/v1/site/$SITE/restart/

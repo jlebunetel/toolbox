@@ -38,7 +38,7 @@ dev = [
 test = ["pytest", "pytest-cov", "pytest-django", "pytest-xdist[psutil]"]
 
 [project.urls]
-Homepage = "https://github.com/jlebunetel/toolbox"
+Homepage = "https://toolbox.lebunetel.com"
 Repository = "https://github.com/jlebunetel/toolbox"
 Issues = "https://github.com/jlebunetel/toolbox/issues"
 Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"

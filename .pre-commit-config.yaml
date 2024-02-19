@@ -39,7 +39,13 @@ repos:
     hooks:
       - id: pylama
         additional_dependencies:
-          ["pylama[all,toml]", "setuptools", "pylint-django[with-django]"]
+          [
+            "pylama[all,toml]",
+            "pydantic",
+            "pydantic-settings",
+            "pylint-django[with-django]",
+            "setuptools",
+          ]
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.7
     hooks:

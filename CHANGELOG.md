@@ -1,3 +1,14 @@
+## v0.2.0 (2024-02-19)
+
+### Feat
+
+- **templates**: add error templates
+- **settings**: use pydantic-settings to manage secrets
+
+### Fix
+
+- **pre-commit**: add pydantic to additional_dependencies
+
 ## v0.1.0 (2024-02-19)
 
 ### Feat

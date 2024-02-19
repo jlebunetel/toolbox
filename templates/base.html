@@ -1,0 +1,94 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Toolbox</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar has-shadow">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item has-text-weight-bold" href="{% url 'landing' %}">
+                    <span class="icon-text">
+                        <span class="icon">
+                            <i class="fa-solid fa-toolbox"></i>
+                        </span>
+                        <span>Toolbox</span>
+                    </span>
+                </a>
+
+                <a role="button" class="navbar-burger">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                </div>
+
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        {% if user.is_staff %}
+                        <a class="navbar-item" href="{% url 'admin:index' %}">
+                            <span class="icon-text">
+                                <span class="icon">
+                                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                                </span>
+                                <span>{% translate 'Administration' %}</span>
+                            </span>
+                        </a>
+                        {% endif %}
+
+                        {% if not user.is_authenticated %}
+                        <div class="buttons">
+                            <a class="button is-primary" href="{% url 'admin:login' %}">
+                                <span class="icon">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                </span>
+                                <span>{% translate 'Log in' %}</span>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="buttons">
+                            <form id="logout-form" method="post" action="{% url 'admin:logout' %}">
+                                {% csrf_token %}
+                                <button class="button is-primary" type="submit">
+                                    <span class="icon">
+                                        <i class="fa-solid fa-right-from-bracket"></i>
+                                    </span>
+                                    <span>{% translate 'Log out' %}</span>
+                                </button>
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="section">
+        <div class="container">
+            <h1 class="title">
+                {% block title %}
+                <span class="icon-text">
+                    <span class="icon">
+                        <i class="fa-solid fa-toolbox"></i>
+                    </span>
+                    <span>Toolbox</span>
+                </span>
+                {% endblock %}
+            </h1>
+            <p class="subtitle">{% block description %}A generic application to make the development of Django modules easier.{% endblock %}</p>
+        </div>
+    </main>
+</body>
+
+</html>

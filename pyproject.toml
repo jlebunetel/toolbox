@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "toolbox"
 version = "v0.1.0"
 requires-python = ">= 3.12"
-dependencies = ["django >= 5.0"]
+dependencies = ["django >= 5.0", "pydantic", "pydantic-settings"]
 authors = [{ name = "Julien Lebunetel", email = "julien@lebunetel.com" }]
 maintainers = [{ name = "Julien Lebunetel", email = "julien@lebunetel.com" }]
 description = "A generic application to make the development of Django modules easier."

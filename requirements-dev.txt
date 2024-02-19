@@ -4,6 +4,8 @@
 #
 #    pip-compile --extra=dev --output-file=requirements-dev.txt --strip-extras pyproject.toml
 #
+annotated-types==0.6.0
+    # via pydantic
 argcomplete==3.2.2
     # via commitizen
 asgiref==3.7.2
@@ -77,6 +79,14 @@ prompt-toolkit==3.0.36
     # via questionary
 pycodestyle==2.11.1
     # via pylama
+pydantic==2.6.1
+    # via
+    #   pydantic-settings
+    #   toolbox (pyproject.toml)
+pydantic-core==2.16.2
+    # via pydantic
+pydantic-settings==2.2.0
+    # via toolbox (pyproject.toml)
 pydocstyle==6.3.0
     # via pylama
 pyflakes==3.2.0
@@ -96,6 +106,8 @@ pyproject-hooks==1.0.0
     # via
     #   build
     #   pip-tools
+python-dotenv==1.0.1
+    # via pydantic-settings
 pyyaml==6.0.1
     # via
     #   commitizen
@@ -123,6 +135,8 @@ typing-extensions==4.9.0
     #   django-stubs
     #   django-stubs-ext
     #   mypy
+    #   pydantic
+    #   pydantic-core
 virtualenv==20.25.0
     # via pre-commit
 wcwidth==0.2.13

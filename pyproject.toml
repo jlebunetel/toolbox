@@ -102,7 +102,7 @@ omit = [
 [tool.commitizen]
 name = "cz_conventional_commits"
 version = "v0.0.0"
-version_files = ["pyproject.toml:project:version"]
+version_files = ["pyproject.toml:version"]
 tag_format = "v$version"
 update_changelog_on_bump = true
 annotated_tag = true

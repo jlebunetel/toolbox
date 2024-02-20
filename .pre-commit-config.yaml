@@ -44,6 +44,8 @@ repos:
             "pydantic",
             "pydantic-settings",
             "pylint-django[with-django]",
+            "python-json-logger",
+            "rich",
             "setuptools",
           ]
   - repo: https://github.com/PyCQA/bandit

@@ -1,4 +1,5 @@
 """Django settings for toolbox project."""
+from logging.config import dictConfig
 from pathlib import Path
 from typing import Any
 
@@ -97,3 +98,61 @@ DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL: str = "landing"
 LOGOUT_REDIRECT_URL: str = "landing"
+
+LOGGING: dict[str, Any] = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "filters": {
+        "require_debug_false": {"()": "django.utils.log.RequireDebugFalse"},
+        "require_debug_true": {"()": "django.utils.log.RequireDebugTrue"},
+    },
+    "formatters": {
+        "json": {
+            "class": "pythonjsonlogger.jsonlogger.JsonFormatter",
+            "format": "%(asctime)s %(levelname)s %(name)s %(message)s"
+            "%(process)d %(thread)d"
+            "%(pathname)s %(lineno)d"
+            "%(status_code)d %(request)s"
+            "%(duration)f %(sql)s %(params)s %(alias)s"
+            "%(receiver)s %(err)s",
+        },
+        "rich": {
+            "format": '[%(process)d] "%(name)s" \n%(message)s',
+        },
+    },
+    "handlers": {
+        "json": {
+            "class": "logging.StreamHandler",
+            "filters": ["require_debug_false"],
+            "formatter": "json",
+        },
+        "null": {
+            "class": "logging.NullHandler",
+        },
+        "rich_console": {
+            "class": "rich.logging.RichHandler",
+            "filters": ["require_debug_true"],
+            "formatter": "rich",
+            "rich_tracebacks": True,
+        },
+    },
+    "root": {
+        "level": "NOTSET",
+        "handlers": [
+            "json",
+            "rich_console",
+        ],
+    },
+    "loggers": {
+        "django": {"level": "NOTSET"},
+        "django.db.backends": {"level": "INFO"},
+        "django.dispatch": {"level": "WARNING"},
+        "django.request": {"level": "WARNING"},
+        "django.security.DisallowedHost": {"handlers": ["null"], "propagate": False},
+        "django.server": {"level": "WARNING"},
+        "django.template": {"level": "WARNING"},
+        "django.utils.autoreload": {"level": "INFO"},
+    },
+}
+LOGGING_CONFIG: Any = None
+dictConfig(LOGGING)

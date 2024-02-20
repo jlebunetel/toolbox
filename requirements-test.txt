@@ -8,7 +8,7 @@ annotated-types==0.6.0
     # via pydantic
 asgiref==3.7.2
     # via django
-coverage==7.4.1
+coverage==7.4.2
     # via pytest-cov
 django==5.0.2
     # via toolbox (pyproject.toml)
@@ -16,6 +16,10 @@ execnet==2.0.2
     # via pytest-xdist
 iniconfig==2.0.0
     # via pytest
+markdown-it-py==3.0.0
+    # via rich
+mdurl==0.1.2
+    # via markdown-it-py
 packaging==23.2
     # via pytest
 pluggy==1.4.0
@@ -28,8 +32,10 @@ pydantic==2.6.1
     #   toolbox (pyproject.toml)
 pydantic-core==2.16.2
     # via pydantic
-pydantic-settings==2.2.0
+pydantic-settings==2.2.1
     # via toolbox (pyproject.toml)
+pygments==2.17.2
+    # via rich
 pytest==8.0.1
     # via
     #   pytest-cov
@@ -44,6 +50,10 @@ pytest-xdist==3.5.0
     # via toolbox (pyproject.toml)
 python-dotenv==1.0.1
     # via pydantic-settings
+python-json-logger==2.0.7
+    # via toolbox (pyproject.toml)
+rich==13.7.0
+    # via toolbox (pyproject.toml)
 sqlparse==0.4.4
     # via django
 typing-extensions==4.9.0

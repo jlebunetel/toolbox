@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.0.0 (2024-02-21)
+
+### BREAKING CHANGE
+
+- change database engine from SQLite to PostgreSQL
+
+### Feat
+
+- **db**: use PostgreSQL as database engine
+- **core**: add PostgreSQL dependencies
+
+### Fix
+
+- **ci**: set postgres host and port env variables
+- **ci**: add port redirection to postgres
+- **ci**: add env variable to postgres
+
 ## 0.4.0 (2024-02-21)
 
 ### Feat

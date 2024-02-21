@@ -8,6 +8,17 @@
     <title>Toolbox</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        body>main {
+            flex: 1;
+        }
+    </style>
 </head>
 
 <body>
@@ -89,6 +100,19 @@
             <p class="subtitle">{% block description %}A generic application to make the development of Django modules easier.{% endblock %}</p>
         </div>
     </main>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <a href="https://github.com/jlebunetel/toolbox/tree/{{ version }}"><strong>Toolbox {{ version }}</strong></a>
+            by <a href="https://github.com/jlebunetel">Julien Lebunetel</a>.
+            The source code is licensed <a href="https://github.com/jlebunetel/toolbox/blob/main/LICENSE">MIT</a>.
+          </p>
+          <p>
+            The website content is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 Deed</a>.
+          </p>
+        </div>
+      </footer>
 </body>
 
 </html>

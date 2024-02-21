@@ -7,4 +7,4 @@ class DebugTestCase(TestCase):
 
     def test_debug(self) -> None:
         """A simple debug test."""
-        assert True  # nosec B101
+        self.assertTrue(not False)

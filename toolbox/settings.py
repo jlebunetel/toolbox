@@ -18,6 +18,12 @@ class Settings(BaseSettings):
     allowed_hosts: list[str] = [".localhost", "127.0.0.1", "[::1]"]
     language_code: str = "en"
 
+    postgres_host: str = "localhost"
+    postgres_port: int = 5432
+    postgres_db: str = "postgres"
+    postgres_user: str = "postgres"
+    postgres_password: str = "postgres"
+
 
 settings = Settings()
 
@@ -66,8 +72,12 @@ TEMPLATES: list[dict[str, Any]] = [
 
 DATABASES: dict[str, Any] = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "HOST": settings.postgres_host,
+        "PORT": settings.postgres_port,
+        "NAME": settings.postgres_db,
+        "USER": settings.postgres_user,
+        "PASSWORD": settings.postgres_password,
     }
 }
 
@@ -153,6 +163,7 @@ LOGGING: dict[str, Any] = {
         "django.server": {"level": "WARNING"},
         "django.template": {"level": "WARNING"},
         "django.utils.autoreload": {"level": "INFO"},
+        "psycopg.pq": {"level": "INFO"},
     },
 }
 LOGGING_CONFIG: Any = None

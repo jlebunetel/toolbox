@@ -6,6 +6,17 @@ on:
 jobs:
   pre-commit:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: "postgres:14"
+        env:
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
     steps:
       - name: Check out
         uses: actions/checkout@v4
@@ -25,5 +36,7 @@ jobs:
             --requirement requirements-test.txt
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
+        env:
+          POSTGRES_HOST: postgres
         with:
           extra_args: --all-files

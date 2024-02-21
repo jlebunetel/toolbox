@@ -8,6 +8,7 @@ dynamic = ["version"]
 requires-python = ">= 3.12"
 dependencies = [
     "django >= 5.0",
+    "psycopg[binary,pool]",
     "pydantic",
     "pydantic-settings",
     "python-json-logger",
@@ -116,3 +117,6 @@ version_files = [
 tag_format = "$version"
 update_changelog_on_bump = true
 annotated_tag = true
+
+[tool.hatch.version]
+path = "toolbox/__init__.py"

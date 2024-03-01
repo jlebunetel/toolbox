@@ -7,9 +7,10 @@ on:
 
 jobs:
   deploy:
-    if: "startsWith(github.event.head_commit.message, 'bump:')"
-    runs-on: [self-hosted, ubuntu-latest]
     name: "Deploy on alwaysdata"
+    if: ${{ startsWith(github.event.head_commit.message, 'bump:') }}
+    runs-on: self-hosted
+
     steps:
       - name: Check out
         uses: appleboy/ssh-action@v1.0.3
@@ -26,6 +27,7 @@ jobs:
             PYTHON_VERSION=3.12 python -m venv venv
             make install
             venv/bin/python manage.py migrate
+
       - name: Restart WSGI server
         env:
           APIKEY: ${{ secrets.ALWAYSDATA_APIKEY }}

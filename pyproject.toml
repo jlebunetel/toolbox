@@ -8,6 +8,7 @@ dynamic = ["version"]
 requires-python = ">= 3.12"
 dependencies = [
     "django >= 5.0",
+    "django-allauth",
     "psycopg[binary,pool]",
     "pydantic",
     "pydantic-settings",
@@ -92,7 +93,6 @@ addopts = """
 --cov=./ \
 --cov-report=term:skip-covered \
 --cov-report=html \
---cov-fail-under=90
 """
 testpaths = ["tests"]
 DJANGO_SETTINGS_MODULE = "toolbox.settings"

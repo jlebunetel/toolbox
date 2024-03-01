@@ -5,7 +5,8 @@ on:
 
 jobs:
   pre-commit:
-    runs-on: [self-hosted, ubuntu-latest]
+    name: "Check code quality"
+    runs-on: self-hosted
 
     services:
       postgres:

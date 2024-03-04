@@ -2,6 +2,7 @@
 
 from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
+from django_stubs_ext import StrOrPromise
 
 
 class AccountsConfig(AppConfig):
@@ -9,4 +10,4 @@ class AccountsConfig(AppConfig):
 
     label: str = "accounts"
     name: str = "accounts"
-    verbose_name: str = _("Authentication and Authorization")
+    verbose_name: StrOrPromise = _("Authentication and Authorization")

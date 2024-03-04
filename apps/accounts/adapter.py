@@ -11,4 +11,4 @@ class CustomUserAccountAdapter(DefaultAccountAdapter):
     def is_open_for_signup(self, request: HttpRequest) -> bool:
         """Checks whether or not the site is open for signups."""
         current_site = get_current_site(request)
-        return current_site.sitecustomization.is_open_for_signup
+        return current_site.sitecustomization.is_open_for_signup  # type: ignore

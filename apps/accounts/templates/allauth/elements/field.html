@@ -1,0 +1,34 @@
+{% load allauth %}
+<div class="field">
+    <label class="label" for="{{ attrs.id }}">
+        {% slot label %}
+        {% endslot %}
+    </label>
+    <div class="control">
+    {% if attrs.type == "textarea" %}
+        <textarea class="textarea" {% if attrs.required %}required{% endif %}
+                  {% if attrs.rows %}rows="{{ attrs.rows }}"{% endif %}
+                  {% if attrs.disabled %}disabled{% endif %}
+                  {% if attrs.readonly %}readonly{% endif %}
+                  {% if attrs.checked %}checked{% endif %}
+                  {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+                  {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
+                  {% if attrs.placeholder %}placeholder="{{ attrs.placeholder }}"{% endif %}>{% slot value %}{% endslot %}</textarea>
+    {% else %}
+        <input class="input" {% if attrs.required %}required{% endif %}
+               {% if attrs.disabled %}disabled{% endif %}
+               {% if attrs.readonly %}readonly{% endif %}
+               {% if attrs.checked %}checked{% endif %}
+               {% if attrs.name %}name="{{ attrs.name }}"{% endif %}
+               {% if attrs.id %}id="{{ attrs.id }}"{% endif %}
+               {% if attrs.placeholder %}placeholder="{{ attrs.placeholder }}"{% endif %}
+               {% if attrs.autocomplete %}autocomplete="{{ attrs.autocomplete }}"{% endif %}
+               value="{{ attrs.value|default_if_none:"" }}"
+               type="{{ attrs.type }}">
+    {% endif %}
+    </div>
+    {% if slots.help_text %}
+        <p class="help">{% slot help_text %}</p>
+        {% endslot %}
+    {% endif %}
+</div>

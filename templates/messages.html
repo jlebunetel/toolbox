@@ -1,0 +1,9 @@
+{% for message in messages %}
+<article x-data="{ open: true }" x-show="open" class="message is-info">
+    <div class="message-header">
+        <p>{{ message.level_tag }}</p>
+        <button x-on:click="open = ! open" class="delete" aria-label="delete"></button>
+    </div>
+    <div class="message-body">{{ message }}</div>
+</article>
+{% endfor %}

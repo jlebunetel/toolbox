@@ -23,17 +23,17 @@
 
 <body>
     <nav class="navbar has-shadow">
-        <div class="container">
+        <div class="container" x-data="{ active: false }">
             <div class="navbar-brand">
                 <a class="navbar-item has-text-weight-bold" href="{% url 'landing' %}">{{ request.site.name }}</a>
 
-                <a role="button" class="navbar-burger">
+                <a role="button" class="navbar-burger" :class="active ? 'is-active' : ''" x-on:click="active = ! active">
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                     <span aria-hidden="true"></span>
                 </a>
             </div>
-            <div class="navbar-menu">
+            <div class="navbar-menu" :class="active ? 'is-active' : ''">
                 <div class="navbar-start">
                 </div>
 

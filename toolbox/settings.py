@@ -139,13 +139,13 @@ ACCOUNT_EMAIL_REQUIRED: bool = True
 ACCOUNT_EMAIL_VERIFICATION: str = "mandatory"
 ACCOUNT_FORMS: dict[str, str] = {"signup": "accounts.forms.CustomSignupForm"}
 ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION: bool = True
-ACCOUNT_LOGOUT_REDIRECT_URL: str = "landing"
+ACCOUNT_LOGOUT_REDIRECT_URL: str = "core:landing"
 ACCOUNT_PRESERVE_USERNAME_CASING: bool = False
 ACCOUNT_USERNAME_MIN_LENGTH: int = 6
 ACCOUNT_USERNAME_VALIDATORS: str = "accounts.validators.username_validators"
 
-LOGIN_REDIRECT_URL: str = "landing"
-LOGOUT_REDIRECT_URL: str = "landing"
+LOGIN_REDIRECT_URL: str = "core:landing"
+LOGOUT_REDIRECT_URL: str = "core:landing"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 

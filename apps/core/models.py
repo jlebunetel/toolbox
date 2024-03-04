@@ -5,6 +5,7 @@ from typing import Iterable
 from django.contrib.sites.models import Site
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_stubs_ext import StrOrPromise
 
 
 class SiteCustomization(models.Model):
@@ -26,8 +27,8 @@ class SiteCustomization(models.Model):
         """Metadata options class."""
 
         ordering: list[str] = ["site"]
-        verbose_name: str = _("site customization")
-        verbose_name_plural: str = _("site customizations")
+        verbose_name: StrOrPromise = _("site customization")
+        verbose_name_plural: StrOrPromise = _("site customizations")
 
     def __repr__(self) -> str:
         """Returns an unambiguous description of the model (for developers)."""

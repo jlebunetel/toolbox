@@ -9,6 +9,7 @@ requires-python = ">= 3.12"
 dependencies = [
     "django >= 5.0",
     "django-allauth",
+    "django-stubs[compatible-mypy]",
     "psycopg[binary,pool]",
     "pydantic",
     "pydantic-settings",
@@ -33,7 +34,6 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    "django-stubs[compatible-mypy]",
     "commitizen",
     "mypy",
     "pip-tools",
@@ -52,10 +52,20 @@ Issues = "https://github.com/jlebunetel/toolbox/issues"
 Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
 
 [tool.mypy]
+packages = ["apps", "tests", "toolbox"]
 plugins = ["mypy_django_plugin.main"]
 
 [[tool.mypy.overrides]]
-module = ["allauth.account"]
+module = [
+    "accounts",
+    "accounts.models",
+    "accounts.validators",
+    "allauth.account",
+    "allauth.account.adapter",
+    "allauth.account.forms",
+    "allauth.account.models",
+    "core.models",
+]
 ignore_missing_imports = true
 
 [tool.django-stubs]

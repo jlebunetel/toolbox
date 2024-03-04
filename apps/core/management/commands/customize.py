@@ -48,9 +48,9 @@ class Command(BaseCommand):
         del args, kwargs
         try:
             site, created = update_or_create_default_site(
-                site_id=settings.SITE_ID,
-                domain=settings.CUSTOM_SITE_DOMAIN,
-                name=settings.CUSTOM_SITE_NAME,
+                site_id=settings.SITE_ID,  # type: ignore
+                domain=settings.CUSTOM_SITE_DOMAIN,  # type: ignore
+                name=settings.CUSTOM_SITE_NAME,  # type: ignore
             )
             if created:
                 self.stdout.write(
@@ -61,9 +61,9 @@ class Command(BaseCommand):
                     self.style.SUCCESS(f'Successfully update site "{site}"')
                 )
             user, created = update_or_create_superuser(
-                username=settings.CUSTOM_SUPERUSER_USERNAME,
-                password=settings.CUSTOM_SUPERUSER_PASSWORD,
-                email=settings.CUSTOM_SUPERUSER_EMAIL,
+                username=settings.CUSTOM_SUPERUSER_USERNAME,  # type: ignore
+                password=settings.CUSTOM_SUPERUSER_PASSWORD,  # type: ignore
+                email=settings.CUSTOM_SUPERUSER_EMAIL,  # type: ignore
             )
             if created:
                 self.stdout.write(

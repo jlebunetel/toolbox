@@ -1,0 +1,13 @@
+{% load i18n %}
+{% if not user.is_authenticated %}
+<div class="buttons">
+    <a class="button is-primary is-light" href="{% url 'account_login' %}">
+        {% translate 'Sign In' %}
+    </a>
+    {% if request.site.sitecustomization.is_open_for_signup %}
+    <a class="button is-primary" href="{% url 'account_signup' %}">
+        {% translate 'Signup' %}
+    </a>
+    {% endif %}
+</div>
+{% endif %}

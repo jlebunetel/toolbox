@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 2.0.0 (2024-03-04)
+
+### BREAKING CHANGE
+
+- change the User model
+
+### Feat
+
+- **templates**: enhance templates rendering
+- **core**: add core and accounts apps
+
+### Fix
+
+- **ci**: remove ubuntu-latest to run on self-hosted runner
+
 ## 1.0.0 (2024-02-21)
 
 ### BREAKING CHANGE

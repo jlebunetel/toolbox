@@ -124,13 +124,8 @@ quickstart: venv install ## Install and run a demo app.
 		venv/bin/python manage.py migrate \
 	)
 
-	@$(call command,"Create a superuser",\
-		DJANGO_SUPERUSER_PASSWORD=demo \
-		venv/bin/python manage.py \
-			createsuperuser \
-			--noinput \
-			--username demo \
-			--email demo@example.com \
+	@$(call command,"Customize the demo app",\
+		venv/bin/python manage.py customize \
 	)
 
 	@$(call command,"Start a lightweight web server for development and also serves static files",\

@@ -1,0 +1,28 @@
+{% extends "account/base_entrance.html" %}
+{% load allauth i18n %}
+{% block head_title %}
+    {% trans "Signup" %}
+{% endblock head_title %}
+{% block content %}
+    {% element h1 %}
+        {% trans "Edit your profile" %}
+    {% endelement %}
+    {% url 'profile' as action_url %}
+    {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+        {% slot body %}
+            {% csrf_token %}
+            {% element fields form=form unlabeled=True %}
+            {% endelement %}
+            {% if redirect_field_value %}
+                <input type="hidden"
+                       name="{{ redirect_field_name }}"
+                       value="{{ redirect_field_value }}" />
+            {% endif %}
+        {% endslot %}
+        {% slot actions %}
+            {% element button tags="prominent,signup" type="submit" %}
+                {% trans "Save" %}
+            {% endelement %}
+        {% endslot %}
+    {% endelement %}
+{% endblock content %}

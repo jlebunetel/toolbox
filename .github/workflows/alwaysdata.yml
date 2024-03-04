@@ -27,6 +27,7 @@ jobs:
             PYTHON_VERSION=3.12 python -m venv venv
             make install
             venv/bin/python manage.py migrate
+            venv/bin/python manage.py customize
 
       - name: Restart WSGI server
         env:

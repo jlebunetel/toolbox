@@ -54,16 +54,25 @@ Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
 [tool.mypy]
 plugins = ["mypy_django_plugin.main"]
 
+[[tool.mypy.overrides]]
+module = ["allauth.account"]
+ignore_missing_imports = true
+
 [tool.django-stubs]
 django_settings_module = "toolbox.settings"
 
 [tool.pylint]
 load-plugins = ["pylint_django"]
 django-settings-module = "toolbox.settings"
+init-hook = 'import sys; sys.path.append("apps")'
 
 [tool.pylama]
 format = "pylint"
 linters = "eradicate,mccabe,mypy,pycodestyle,pyflakes,pylint,radon,vulture,isort"
+
+[[tool.pylama.files]]
+path = "*/migrations/*.py"
+skip = 1
 
 [tool.pylama.linter.vulture]
 min-confidence = 80

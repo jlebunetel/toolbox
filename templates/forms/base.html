@@ -1,0 +1,42 @@
+{% if errors %}
+<article class="message is-danger">
+  <div class="message-body">{{ errors }}</div>
+</article>
+{% endif %}
+
+{% if errors and not fields %}
+<div>{% for field in hidden_fields %}{{ field }}{% endfor %}</div>
+{% endif %}
+
+{% for field, errors in fields %}
+<div class="field">
+  {% if field.field.widget.input_type == 'checkbox' %}
+  <div class="control">
+    <label class="checkbox">
+      {{ field }}
+      {% if field.label %}{{ field.label }}{% endif %}
+    </label>
+  </div>
+  {% else %}
+    {% if field.label %}<label class="label">{{ field.label_tag }}</label>{% endif %}
+
+    <div class="control">
+      {{ field }}
+    </div>
+
+    {% if errors %}<div class="content help is-danger">{{ errors }}</div>{% endif %}
+
+    {% if field.help_text %}
+    <div class="content help" {% if field.auto_id %} id="{{ field.auto_id }}_helptext" {% endif %}>{{ field.help_text|safe }}</div>
+    {% endif %}
+  {% endif %}
+
+  {% if forloop.last %}
+  {% for field in hidden_fields %}{{ field }}{% endfor %}
+  {% endif %}
+</div>
+{% endfor %}
+
+{% if not fields and not errors %}
+{% for field in hidden_fields %}{{ field }}{% endfor %}
+{% endif %}

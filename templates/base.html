@@ -1,14 +1,17 @@
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/svg" href="{% url 'core:favicon' %}">
-    <title>{{ request.site.name }}</title>
+    <title>{{ request.site.name }} | {% block head_title %}{% endblock head_title %}</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.min.js" integrity="sha512-Atu8sttM7mNNMon28+GHxLdz4Xo2APm1WVHwiLW9gW4bmHpHc/E2IbXrj98SmefTmbqbUTOztKl5PDPiu0LD/A==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
     <style>
         body {
             display: flex;
@@ -23,73 +26,34 @@
 </head>
 
 <body>
-    <nav class="navbar has-shadow">
-        <div class="container" x-data="{ active: false }">
-            <div class="navbar-brand">
-                <a class="navbar-item has-text-weight-bold" href="{% url 'core:landing' %}">{{ request.site.name }}</a>
-
-                <a role="button" class="navbar-burger" :class="active ? 'is-active' : ''" x-on:click="active = ! active">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <div class="navbar-menu" :class="active ? 'is-active' : ''">
-                <div class="navbar-start">
-                </div>
-
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        {% include "authentication.html" %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
+    {% include "components/navbar.html" %}
 
     <main class="section">
         <div class="container">
-
             <div class="columns">
-                <div class="column is-one-fifth">
 
+                <div class="column is-one-fifth">
+                    {% if messages %}
+                    {% include "elements/messages.html" %}
+                    {% endif %}
                 </div>
 
                 <div class="column">
-                    {% if messages %}
-                    {% include "messages.html" %}
-                    {% endif %}
-
                     {% block content %}
-                    <h1 class="title">
-                        {% block title %}{{ request.site.name }}{% endblock %}
-                    </h1>
-                    <p class="subtitle">{% block description %}A generic application to make the development of Django modules easier.{% endblock %}</p>
-                    {% endblock %}
+                    {% endblock content %}
                 </div>
 
                 <div class="column is-one-fifth">
-                    {% include "menus.html" %}
+                    {% include "components/menus.html" %}
                 </div>
+
             </div>
-
-
-
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <a href="https://github.com/jlebunetel/toolbox/tree/{{ version }}"><strong>Toolbox {{ version }}</strong></a>
-                by <a href="https://github.com/jlebunetel">Julien Lebunetel</a>.
-                The source code is licensed <a href="https://github.com/jlebunetel/toolbox/blob/main/LICENSE">MIT</a>.
-            </p>
-            <p>
-                The website content is licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0 Deed</a>.
-            </p>
-        </div>
-    </footer>
+    {% include "components/footer.html" %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.min.js" integrity="sha512-Atu8sttM7mNNMon28+GHxLdz4Xo2APm1WVHwiLW9gW4bmHpHc/E2IbXrj98SmefTmbqbUTOztKl5PDPiu0LD/A==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
 </body>
 
 </html>

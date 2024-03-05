@@ -6,8 +6,15 @@ from pathlib import Path
 from typing import Any
 
 from django.core.management.utils import get_random_secret_key
+from django.forms.renderers import TemplatesSetting
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class CustomFormRenderer(TemplatesSetting):
+    """Customize the default form renderer."""
+
+    form_template_name = "forms/base.html"
 
 
 class Settings(BaseSettings):
@@ -63,6 +70,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "django.forms",
     "core.apps.CoreConfig",
     "allauth",
     "allauth.account",
@@ -158,6 +166,8 @@ STATIC_ROOT: Path = BASE_DIR / "static"
 STATIC_URL: str = "static/"
 
 DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
+
+FORM_RENDERER = "toolbox.settings.CustomFormRenderer"
 
 LOGGING_CONFIG: Any = None
 LOGGING: dict[str, Any] = {

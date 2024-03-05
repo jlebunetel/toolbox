@@ -1,1 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+{% block head_title %}{% translate 'Home' %}{% endblock head_title %}
+
+{% block content %}
+<h1 class="title">{{ request.site.name }}</h1>
+<p class="subtitle">{{ request.site.domain }}</p>
+{% endblock content %}

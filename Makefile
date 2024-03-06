@@ -1,5 +1,7 @@
 default: help
 
+DATE=$(shell date '+%Y-%m-%dT%H-%M-%S')
+
 RED=\033[1;31m
 GREEN=\033[1;32m
 YELLOW=\033[0;33m
@@ -131,6 +133,43 @@ quickstart: venv install ## Install and run a demo app.
 	@$(call command,"Start a lightweight web server for development and also serves static files",\
 		venv/bin/python manage.py runserver \
 	)
+
+BACKUP_DIR = "./backup/"
+BACKUP_FILE = ${BACKUP_DIR}${DATE}.xml
+
+.PHONY: backup
+backup: ## Saves all data in the database into an xml file (Usage: backup BACKUP_DIR=./backup).
+	@$(call command,"Creates BACKUP_DIR if required",\
+		mkdir -p ${BACKUP_DIR} \
+	)
+
+	@$(call command,"Backup in ${BACKUP_FILE}",\
+		venv/bin/python \
+			manage.py \
+			dumpdata \
+			--all \
+			--format=xml \
+			--indent=4 \
+			--output=${BACKUP_FILE} \
+			--natural-foreign \
+			--verbosity=3 \
+			--force-color \
+			--exclude=admin.logentry \
+			--exclude=sessions.session \
+	)
+
+BACKUP = "backup.xml"
+
+.PHONY: restore
+restore: ## Restores all data in the database from an xml file (Usage: restore BACKUP=<filename>.xml).
+	@$(call command,"Restore",\
+		venv/bin/python \
+			manage.py \
+			loaddata \
+			--format=xml \
+			${BACKUP} \
+	)
+
 
 .PHONY: help
 help: ## Lists all the available commands.

@@ -22,6 +22,7 @@ jobs:
           script: |
             cd ${{ secrets.ALWAYSDATA_PATH }}
             git pull
+            make backup
             make clean
             rm -rf venv
             PYTHON_VERSION=3.12 python -m venv venv

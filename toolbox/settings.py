@@ -74,6 +74,7 @@ INSTALLED_APPS: list[str] = [
     "core.apps.CoreConfig",
     "allauth",
     "allauth.account",
+    "anniversaries.apps.AnniversariesConfig",
 ]
 
 MIDDLEWARE: list[str] = [

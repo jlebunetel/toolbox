@@ -107,6 +107,7 @@ INSTALLED_APPS: list[str] = [
     "allauth.account",
     "rest_framework",
     "anniversaries.apps.AnniversariesConfig",
+    "budgets.apps.BudgetsConfig",
     "labbooks.apps.LabbooksConfig",
 ]
 

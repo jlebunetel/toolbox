@@ -163,3 +163,4 @@ cython_debug/
 notes.md
 temp/
 backup/
+!apps/**/LC_MESSAGES/django.mo

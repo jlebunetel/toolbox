@@ -10,6 +10,7 @@ dependencies = [
     "django >= 5.0",
     "django-allauth",
     "django-stubs[compatible-mypy]",
+    "icalendar",
     "psycopg[binary,pool]",
     "pydantic",
     "pydantic-settings",
@@ -54,18 +55,6 @@ Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
 [tool.mypy]
 packages = ["apps", "tests", "toolbox"]
 plugins = ["mypy_django_plugin.main"]
-
-[[tool.mypy.overrides]]
-module = [
-    "accounts",
-    "accounts.models",
-    "accounts.validators",
-    "allauth.account",
-    "allauth.account.adapter",
-    "allauth.account.forms",
-    "allauth.account.models",
-    "core.models",
-]
 ignore_missing_imports = true
 
 [tool.django-stubs]
@@ -78,7 +67,7 @@ init-hook = 'import sys; sys.path.append("apps")'
 
 [tool.pylama]
 format = "pylint"
-linters = "eradicate,mccabe,mypy,pycodestyle,pyflakes,pylint,radon,vulture,isort"
+linters = "eradicate,mccabe,mypy,pycodestyle,pyflakes,pylint,radon,vulture"
 
 [[tool.pylama.files]]
 path = "*/migrations/*.py"

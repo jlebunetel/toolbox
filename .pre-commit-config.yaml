@@ -42,6 +42,7 @@ repos:
           [
             "django-allauth",
             "django-stubs[compatible-mypy]",
+            "icalendar",
             "psycopg[binary,pool]",
             "pylama[all,toml]",
             "pydantic",

@@ -1,4 +1,4 @@
-"""Model definitions for the 'core' application."""
+"""Model definitions to personalize the site."""
 
 from typing import Iterable
 

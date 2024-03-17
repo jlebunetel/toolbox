@@ -1,11 +1,11 @@
 {% extends "account/base_entrance.html" %}
 {% load allauth i18n %}
 {% block head_title %}
-    {% trans "Signup" %}
+    {% trans "My profile" %}
 {% endblock head_title %}
 {% block content %}
     {% element h1 %}
-        {% trans "Edit your profile" %}
+        {% trans "Edit my profile" %}
     {% endelement %}
     {% url 'profile' as action_url %}
     {% element form form=form method="post" action=action_url tags="entrance,signup" %}

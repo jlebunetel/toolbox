@@ -10,4 +10,4 @@ class AnniversariesConfig(AppConfig):
 
     label: str = "anniversaries"
     name: str = "anniversaries"
-    verbose_name: StrOrPromise = _("Anniversaries application")
+    verbose_name: StrOrPromise = _("Anniversaries")

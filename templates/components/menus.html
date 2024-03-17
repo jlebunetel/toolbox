@@ -13,7 +13,7 @@
     </p>
     <ul class="menu-list">
         {% url 'accounts:profile' as the_url %}
-        <li><a href="{{ the_url }}" {% if request.path == the_url %}class="is-active"{% endif %}>{% translate 'Your profile' %}</a></li>
+        <li><a href="{{ the_url }}" {% if request.path == the_url %}class="is-active"{% endif %}>{% translate 'My profile' %}</a></li>
 
         {% url 'account_email' as the_url %}
         <li><a href="{% url 'account_email' %}" {% if request.path == the_url %}class="is-active"{% endif %}>{% translate 'Change Email' %}</a></li>

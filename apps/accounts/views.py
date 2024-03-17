@@ -15,17 +15,28 @@ class ProfileForm(ModelForm):
         model = User
         fields = [
             "username",
+            "first_name",
+            "last_name",
             "date_joined",
             "is_staff",
             "is_superuser",
-            "first_name",
-            "last_name",
         ]
 
-    username = CharField(disabled=True)
-    is_staff = BooleanField(disabled=True)
-    is_superuser = BooleanField(disabled=True)
-    date_joined = DateTimeField(disabled=True)
+    username = CharField(disabled=True, label=_("Username"))
+    is_staff = BooleanField(
+        disabled=True,
+        label=_("Staff status"),
+        help_text=_("Designates whether the user can log into this admin site."),
+    )
+    is_superuser = BooleanField(
+        disabled=True,
+        label=_("Superuser status"),
+        help_text=_(
+            "Designates that this user has all permissions without explicitly assigning"
+            " them."
+        ),
+    )
+    date_joined = DateTimeField(disabled=True, label=_("Date joined"))
 
 
 class ProfileView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):

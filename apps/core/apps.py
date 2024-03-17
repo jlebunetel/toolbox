@@ -10,4 +10,4 @@ class CoreConfig(AppConfig):
 
     label: str = "core"
     name: str = "core"
-    verbose_name: StrOrPromise = _("Core application")
+    verbose_name: StrOrPromise = _("Core")

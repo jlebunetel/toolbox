@@ -1,0 +1,11 @@
+{% load i18n %}
+{% if events %}
+{% blocktranslate %}Birthdays in the next {{ days }} days:{% endblocktranslate %}
+
+{% for person, age, date in events %}{% with person.full_name as full_name %}• {% blocktranslate %}{{ date }}: {{ full_name }} will be {{ age }}.{% endblocktranslate %}{% endwith %}
+{% endfor %}{% else %}{% blocktranslate %}No upcoming birthdays in the next {{ days }} days.{% endblocktranslate %}{% endif %}
+
+--
+{{ calendar }}
+{{ site.name }}
+{{ site.domain }}

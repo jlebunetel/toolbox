@@ -1,0 +1,25 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    {% if events %}
+    <p>{% blocktranslate %}Birthdays in the next {{ days }} days:{% endblocktranslate %}</p>
+    <ul>
+        {% for person, age, date in events %}
+        {% with person.full_name as full_name %}
+        <li>{% blocktranslate %}{{ date }}: {{ full_name }} will be {{ age }}.{% endblocktranslate %}</li>
+        {% endwith %}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% blocktranslate %}No upcoming birthdays in the next {{ days }} days.{% endblocktranslate %}</p>
+    {% endif %}
+    <br>
+    <hr>
+    <p>{{ calendar }} | <a href="{{ site.domain }}">{{ site.name }}</a></p>
+</body>
+</html>

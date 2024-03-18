@@ -60,6 +60,7 @@ class Settings(BaseSettings):
         description="Whether to send the SMTP Date header of email messages in the "
         "local time zone (True) or in UTC (False).",
     )
+    default_from_email: str = "webmaster@localhost"
 
     @property
     def email_subject_prefix(self) -> str:
@@ -199,6 +200,7 @@ EMAIL_SSL_KEYFILE: str | None = settings.email_ssl_keyfile
 EMAIL_SSL_CERTFILE: str | None = settings.email_ssl_certfile
 EMAIL_SUBJECT_PREFIX: str = settings.email_subject_prefix
 EMAIL_USE_LOCALTIME: bool = settings.email_use_localtime
+DEFAULT_FROM_EMAIL: str = settings.default_from_email
 
 LANGUAGE_CODE: str = settings.language_code
 TIME_ZONE: str = "UTC"

@@ -20,7 +20,9 @@ class CustomFormRenderer(TemplatesSetting):
 class Settings(BaseSettings):
     """Load settings from environment variables or secrets files."""
 
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
+    model_config = SettingsConfigDict(
+        env_file=".env", env_file_encoding="utf-8", extra="ignore"
+    )
 
     debug: bool = False
     secret_key: str = Field(default_factory=get_random_secret_key)

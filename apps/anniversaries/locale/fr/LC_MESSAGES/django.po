@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-16 14:58+0100\n"
+"POT-Creation-Date: 2024-03-18 15:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: admin/calendars.py:20 admin/persons.py:44 models/calendars.py:43
-#: models/families.py:46 models/persons.py:121
+#: admin/calendars.py:20 admin/persons.py:53 models/calendars.py:55
+#: models/families.py:46 models/persons.py:116
 msgid "families"
 msgstr "familles"
 
-#: admin/calendars.py:24
+#: admin/calendars.py:25
 msgid "URL"
 msgstr "URL"
 
-#: admin/calendars.py:49 admin/families.py:46 admin/persons.py:96
+#: admin/calendars.py:51 admin/families.py:48 admin/persons.py:106
 msgid "Advanced options"
 msgstr "Options avancées"
 
@@ -35,29 +35,34 @@ msgstr "Options avancées"
 msgid "persons"
 msgstr "personnes"
 
-#: admin/families.py:25 models/families.py:37
+#: admin/families.py:26 models/families.py:37
 msgid "users"
 msgstr "utilisateurs"
 
-#: admin/persons.py:21
+#: admin/persons.py:23
 msgid "is alive?"
 msgstr "vivant ?"
 
-#: admin/persons.py:27
+#: admin/persons.py:31
 msgid "❤️ alive"
 msgstr "❤️ vivant"
 
-#: admin/persons.py:28
+#: admin/persons.py:32
 msgid "🪦 dead"
 msgstr "🪦 décédé(e)"
 
-#: admin/persons.py:40
+#: admin/persons.py:48
 msgid "age"
 msgstr "age"
 
 #: apps.py:13
 msgid "Anniversaries"
 msgstr "Anniversaires"
+
+#: management/commands/send_event_reminders.py:42
+#, python-format
+msgid "Birthdays in the next %(days)s days"
+msgstr "Anniveraires dans les %(days)s prochains jours"
 
 #: models/calendars.py:29 models/families.py:22
 msgid "icon"
@@ -75,21 +80,22 @@ msgstr "Mon calendrier"
 msgid "title"
 msgstr "titre"
 
-#: models/calendars.py:48
+#: models/calendars.py:41
 msgid "hide death anniversaries?"
 msgstr "cacher les anniversaires de décès ?"
 
-#: models/calendars.py:49
+#: models/calendars.py:42
 msgid "Should we hide death anniversaries in this calendar?"
 msgstr "Faut-il cacher les anniversaires de décès dans ce calendrier ?"
 
-#: models/calendars.py:54
+#: models/calendars.py:47
 msgid "years ahead"
 msgstr "années d'avance"
 
-#: models/calendars.py:55
+#: models/calendars.py:48
 msgid "How many years into the future should we display birthdays?"
-msgstr "Pour combien d’années d'avances devrions-nous afficher les anniversaires ?"
+msgstr ""
+"Pour combien d’années d'avances devrions-nous afficher les anniversaires ?"
 
 #: models/calendars.py:62
 msgid "calendar"
@@ -109,136 +115,156 @@ msgstr "Ma famille"
 
 #: models/families.py:38
 msgid "Users authorized to view and edit people linked to this object."
-msgstr "Utilisateurs autorisés à visualiser et modifier les personnes liées à cet objet."
+msgstr ""
+"Utilisateurs autorisés à visualiser et modifier les personnes liées à cet "
+"objet."
 
 #: models/families.py:45
 msgid "family"
 msgstr "famille"
 
-#: models/persons.py:35
+#: models/persons.py:30
 msgid "nickname"
 msgstr "surnom"
 
-#: models/persons.py:40
+#: models/persons.py:35
 msgid "first name"
 msgstr "prénom"
 
-#: models/persons.py:49
+#: models/persons.py:44
 msgid "middle names"
 msgstr "seconds prénoms"
 
-#: models/persons.py:50
+#: models/persons.py:45
 msgid "Middle names separated by commas."
 msgstr "Seconds prénoms séparés par des virgules."
 
-#: models/persons.py:56
+#: models/persons.py:51
 msgid "birth name"
 msgstr "nom de naissance"
 
-#: models/persons.py:62
+#: models/persons.py:57
 msgid "married name"
 msgstr "nom marital"
 
-#: models/persons.py:68
+#: models/persons.py:63
 msgid "preferred name"
 msgstr "nom d'usage"
 
-#: models/persons.py:74
+#: models/persons.py:69
 msgid "date of birth"
 msgstr "date de naissance"
 
-#: models/persons.py:80
+#: models/persons.py:75
 msgid "date of death"
 msgstr "date de décès"
 
-#: models/persons.py:88
+#: models/persons.py:83
 msgid "🧒 unknown"
 msgstr "🧒 inconnu"
 
-#: models/persons.py:89
+#: models/persons.py:84
 msgid "👦 male"
 msgstr "👦 homme"
 
-#: models/persons.py:90
+#: models/persons.py:85
 msgid "👧 female"
 msgstr "👧 femme"
 
-#: models/persons.py:96
+#: models/persons.py:91
 msgid "sex"
 msgstr "sexe"
 
-#: models/persons.py:105
+#: models/persons.py:100
 msgid "🦄 unknown"
 msgstr "🦄 inconnu"
 
-#: models/persons.py:106
+#: models/persons.py:101
 msgid "🧒 human"
 msgstr "🧒 humain"
 
-#: models/persons.py:107
+#: models/persons.py:102
 msgid "🐱 cat"
 msgstr "🐱 chat"
 
-#: models/persons.py:108
+#: models/persons.py:103
 msgid "🐶 dog"
 msgstr "🐶 chien"
 
-#: models/persons.py:114
+#: models/persons.py:109
 msgid "species"
 msgstr "espèce"
 
-#: models/persons.py:128
+#: models/persons.py:123
 msgid "person"
 msgstr "personne"
 
-#: models/persons.py:129
+#: models/persons.py:124
 msgid "people"
 msgstr "personnes"
 
-#: models/persons.py:221
+#: models/persons.py:216
 #, python-format
 msgid "Birth of %(name)s"
 msgstr "Naissance de %(name)s"
 
-#: models/persons.py:223 models/persons.py:280
+#: models/persons.py:218 models/persons.py:277
 #, python-format
 msgid "%(age)d year"
 msgid_plural "%(age)d years"
 msgstr[0] "%(age)d an"
 msgstr[1] "%(age)d ans"
 
-#: models/persons.py:232
+#: models/persons.py:227
 #, python-format
 msgid "%(name)s was born today."
 msgstr "%(name)s est né(e) aujourd'hui."
 
-#: models/persons.py:236
+#: models/persons.py:231
 #, python-format
 msgid "%(name)s was born on %(date)s"
 msgstr "%(name)s est né(e) le %(date)s"
 
-#: models/persons.py:242 models/persons.py:299
+#: models/persons.py:237 models/persons.py:296
 #, python-format
 msgid "one year ago."
 msgid_plural "%(age)d years ago."
 msgstr[0] "l'année dernière."
 msgstr[1] "il y a %(age)d ans."
 
-#: models/persons.py:278
+#: models/persons.py:275
 #, python-format
 msgid "Death of %(name)s"
 msgstr "Décès de %(name)s"
 
-#: models/persons.py:289
+#: models/persons.py:286
 #, python-format
 msgid "%(name)s died today."
 msgstr "%(name)s est décédé(e) aujourd'hui."
 
-#: models/persons.py:293
+#: models/persons.py:290
 #, python-format
 msgid "%(name)s died on %(date)s"
 msgstr "%(name)s est décédé(e) le %(date)s"
 
-#: utils.py:47
+#: templates/anniversaries/event_reminders.html:10
+#: templates/anniversaries/event_reminders.txt:3
+#, python-format
+msgid "Birthdays in the next %(days)s days:"
+msgstr "Anniveraires dans les %(days)s prochains jours :"
+
+#: templates/anniversaries/event_reminders.html:14
+#: templates/anniversaries/event_reminders.txt:5
+#, python-format
+msgid "%(date)s: %(full_name)s will be %(age)s."
+msgstr "Le %(date)s, %(full_name)s aura %(age)s an(s)."
+
+#: templates/anniversaries/event_reminders.html:19
+#: templates/anniversaries/event_reminders.txt:6
+#, python-format
+msgid "No upcoming birthdays in the next %(days)s days."
+msgstr "Aucun anniversaire à venir dans les %(days)s prochains jours."
+
+#: utils.py:55
 msgid "New event"
 msgstr "Nouvel évènement"

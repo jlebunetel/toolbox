@@ -1,7 +1,7 @@
 """Model definitions for the 'anniversaries' application."""
 
 import logging
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from uuid import uuid4
 
 from anniversaries.utils import get_icalendar
@@ -100,3 +100,19 @@ class Calendar(SensitiveMixin, models.Model):
                     ical.add_component(ievent)
 
         return ical.to_ical()
+
+    def get_next_birthday_list(self, days: int) -> list[tuple[Person, int, date]]:
+        """Returns the list of birthdays from today to "days" in the future."""
+        events: list[tuple[Person, int, date]] = []
+        today = date.today()
+        for person in self.people():
+            birthday_list = person.get_birthday_list(
+                end_date=today + timedelta(days=days)
+            )
+            next_birthday_list = [
+                (person, age, day)
+                for age, day in enumerate(birthday_list)
+                if day > today
+            ]
+            events += next_birthday_list
+        return events

@@ -40,6 +40,31 @@ class Settings(BaseSettings):
     postgres_user: str = "postgres"
     postgres_password: str = "postgres"
 
+    email_host: str = "localhost"
+    email_port: int = 25
+    email_host_user: str = ""
+    email_host_password: str = ""
+    email_use_tls: bool = False
+    email_use_ssl: bool = False
+    email_timeout: int = Field(
+        default=15,
+        description="Specifies a timeout in seconds for blocking operations like the "
+        "connection attempt.",
+    )
+    email_ssl_keyfile: str | None = None
+    email_ssl_certfile: str | None = None
+    email_use_localtime: bool = Field(
+        default=True,
+        description="Whether to send the SMTP Date header of email messages in the "
+        "local time zone (True) or in UTC (False).",
+    )
+
+    @property
+    def email_subject_prefix(self) -> str:
+        """Subject-line prefix for email messages sent with
+        django.core.mail.mail_admins or django.core.mail.mail_managers."""
+        return f"[{self.site_name}] "
+
 
 settings = Settings()
 
@@ -156,7 +181,22 @@ ACCOUNT_USERNAME_VALIDATORS: str = "accounts.validators.username_validators"
 LOGIN_REDIRECT_URL: str = "core:landing"
 LOGOUT_REDIRECT_URL: str = "core:landing"
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND: str = (
+    "django.core.mail.backends.console.EmailBackend"
+    if DEBUG
+    else "django.core.mail.backends.smtp.EmailBackend"
+)
+EMAIL_HOST: str = settings.email_host
+EMAIL_PORT: int = settings.email_port
+EMAIL_HOST_USER: str = settings.email_host_user
+EMAIL_HOST_PASSWORD: str = settings.email_host_password
+EMAIL_USE_TLS: bool = settings.email_use_tls
+EMAIL_USE_SSL: bool = settings.email_use_ssl
+EMAIL_TIMEOUT: int | None = settings.email_timeout
+EMAIL_SSL_KEYFILE: str | None = settings.email_ssl_keyfile
+EMAIL_SSL_CERTFILE: str | None = settings.email_ssl_certfile
+EMAIL_SUBJECT_PREFIX: str = settings.email_subject_prefix
+EMAIL_USE_LOCALTIME: bool = settings.email_use_localtime
 
 LANGUAGE_CODE: str = settings.language_code
 TIME_ZONE: str = "UTC"

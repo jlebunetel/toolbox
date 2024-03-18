@@ -1,7 +1,7 @@
 # toolbox
 A generic application to make the development of Django modules easier.
 
-![version](https://img.shields.io/badge/version-2.3.1-blue)
+![version](https://img.shields.io/badge/version-2.4.0-blue)
 ![python_version](https://img.shields.io/badge/python-3.12-blue)
 ![pre-commit_action](https://github.com/jlebunetel/toolbox/actions/workflows/pre-commit.yml/badge.svg)
 

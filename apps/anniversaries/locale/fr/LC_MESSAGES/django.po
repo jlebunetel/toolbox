@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-18 15:06+0100\n"
+"POT-Creation-Date: 2024-03-18 18:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -255,15 +255,25 @@ msgstr "Anniveraires dans les %(days)s prochains jours :"
 
 #: templates/anniversaries/event_reminders.html:14
 #: templates/anniversaries/event_reminders.txt:5
+#: templates/anniversaries/widgets/upcoming_birthdays.html:11
 #, python-format
 msgid "%(date)s: %(full_name)s will be %(age)s."
 msgstr "Le %(date)s, %(full_name)s aura %(age)s an(s)."
 
 #: templates/anniversaries/event_reminders.html:19
 #: templates/anniversaries/event_reminders.txt:6
+#: templates/anniversaries/widgets/upcoming_birthdays.html:16
 #, python-format
 msgid "No upcoming birthdays in the next %(days)s days."
 msgstr "Aucun anniversaire à venir dans les %(days)s prochains jours."
+
+#: templates/anniversaries/widgets/upcoming_birthdays.html:3
+msgid "Upcoming birthdays"
+msgstr "Anniveraires à venir"
+
+#: templates/anniversaries/widgets/upcoming_birthdays.html:4
+msgid "in the next %(days)s days"
+msgstr "dans les %(days)s prochains jours"
 
 #: utils.py:55
 msgid "New event"

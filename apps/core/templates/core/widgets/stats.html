@@ -1,0 +1,10 @@
+<nav class="level">
+    {% for key, values in stats.items %}
+    <div class="level-item has-text-centered">
+        <div>
+            <p class="heading">{{ key }}</p>
+            <p class="title">{{ values }}</p>
+        </div>
+    </div>
+    {% endfor %}
+</nav>

@@ -1,4 +1,5 @@
 """Test templates module"""
+
 from django.test import TestCase
 from django.test.client import RequestFactory
 

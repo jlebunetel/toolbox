@@ -48,6 +48,7 @@ jobs:
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
         env:
+          DJANGO_SETTINGS_MODULE: toolbox.settings
           POSTGRES_HOST: localhost
           POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         with:

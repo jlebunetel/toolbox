@@ -1,0 +1,18 @@
+{% load i18n %}
+<div class="block">
+    <p class="title is-4">{% translate 'Upcoming birthdays' %}</p>
+    <p class="subtitle is-6">{% blocktranslate with days=upcoming_days %}in the next {{ days }} days{% endblocktranslate %}</p>
+</div>
+<div class="content">
+    {% if upcoming_birthdays %}
+    <ul>
+        {% for person, age, date in upcoming_birthdays %}
+        {% with person.full_name as full_name %}
+        <li>{% blocktranslate %}{{ date }}: {{ full_name }} will be {{ age }}.{% endblocktranslate %}</li>
+        {% endwith %}
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>{% blocktranslate with days=upcoming_days %}No upcoming birthdays in the next {{ days }} days.{% endblocktranslate %}</p>
+    {% endif %}
+</div>

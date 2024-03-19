@@ -6,6 +6,7 @@ and returns a dictionary to add to the context.
 These are referenced from the 'context_processors' option of the configuration
 of a DjangoTemplates backend and used by RequestContext.
 """
+
 from django.http import HttpRequest
 
 from toolbox import __version__

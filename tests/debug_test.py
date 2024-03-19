@@ -1,4 +1,5 @@
 """A simple debug test module."""
+
 from django.test import TestCase
 
 

@@ -1,4 +1,4 @@
-name: Check code quality
+name: pre-commit
 
 on:
   pull_request:
@@ -8,22 +8,6 @@ jobs:
     name: "Check code quality"
     runs-on: self-hosted
 
-    services:
-      postgres:
-        image: "postgres:14"
-        env:
-          POSTGRES_DB: "postgres"
-          POSTGRES_USER: "postgres"
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - "5432:5432"
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-
     steps:
       - name: Check out
         uses: actions/checkout@v4
@@ -31,25 +15,7 @@ jobs:
           fetch-depth: 0
           token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Create a virtual environment
-        run: python -m venv venv
-
-      - name: Install test dependencies
-        run: |
-          venv/bin/python -m pip install \
-            --requirement requirements.txt \
-            --requirement requirements-test.txt
-
       - name: Run pre-commit
         uses: pre-commit/action@v3.0.0
-        env:
-          DJANGO_SETTINGS_MODULE: toolbox.settings
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         with:
           extra_args: --all-files

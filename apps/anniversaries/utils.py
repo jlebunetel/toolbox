@@ -19,9 +19,10 @@ def get_ievent_uid(*, root: str, context: str, index: int = 0) -> str:
 def get_icalendar(*, title: str) -> ICalendar:
     """Returns a icalendar.Calendar object."""
     ical = ICalendar()
+
     ical.add(
         "prodid",
-        f"-//Julien Lebunetel//toolbox {__version__}//{get_language().upper()}",
+        f"-//Julien Lebunetel//toolbox {__version__}//" f"{get_language().upper()}",  # type: ignore[union-attr] # noqa: E501 # pylint: disable=line-too-long
     )
     ical.add("version", "2.0")
     ical.add("calscale", "GREGORIAN")

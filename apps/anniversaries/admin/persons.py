@@ -135,7 +135,7 @@ class PersonAdmin(SensitiveAdminMixin, admin.ModelAdmin):
             readonly_fields.append("created_by")
         return list(super().get_readonly_fields(request, obj)) + readonly_fields
 
-    def formfield_for_manytomany(
+    def formfield_for_manytomany(  # type: ignore[override]
         self,
         db_field: ManyToManyField,
         request: HttpRequest,

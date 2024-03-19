@@ -51,4 +51,4 @@ class User(AbstractUser):
 def get_sentinel_user() -> User:
     """Returns the sentinel (or deleted) user. Creates it if required."""
     user, _ = User.objects.get_or_create(username="deleted", is_active=False)
-    return user
+    return user  # type: ignore[return-value]

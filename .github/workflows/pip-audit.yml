@@ -1,0 +1,33 @@
+name: pip-audit
+
+on:
+  pull_request:
+
+jobs:
+  pip-audit:
+    name: "Scan for packages with known vulnerabilities"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: "${{ secrets.PERSONAL_ACCESS_TOKEN }}"
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install pip-audit
+
+      - name: Run pip-audit
+        run: |
+          pip-audit \
+            --verbose \
+            --requirement requirements.txt \
+            --requirement requirements-dev.txt \
+            --requirement requirements-test.txt

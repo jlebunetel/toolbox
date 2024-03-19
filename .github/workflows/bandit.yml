@@ -1,4 +1,4 @@
-name: Search for common security issues in Python code
+name: bandit
 
 on:
   pull_request:

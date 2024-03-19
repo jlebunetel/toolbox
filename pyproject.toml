@@ -39,7 +39,6 @@ dev = [
     "mypy",
     "pip-tools",
     "pre-commit",
-    "pylama",
     "pylint",
     "pylint-django",
     "ruff",
@@ -52,29 +51,35 @@ Repository = "https://github.com/jlebunetel/toolbox"
 Issues = "https://github.com/jlebunetel/toolbox/issues"
 Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
 
-[tool.mypy]
-packages = ["apps", "tests", "toolbox"]
-plugins = ["mypy_django_plugin.main"]
-ignore_missing_imports = true
-
-[tool.django-stubs]
-django_settings_module = "toolbox.settings"
-
-[tool.pylint]
-load-plugins = ["pylint_django"]
-django-settings-module = "toolbox.settings"
-init-hook = 'import sys; sys.path.append("apps")'
-
 [tool.pylama]
 format = "pylint"
-linters = "eradicate,mccabe,mypy,pycodestyle,pyflakes,pylint,radon,vulture"
+linters = "eradicate,mccabe,pycodestyle,pyflakes,radon,vulture"
 
 [[tool.pylama.files]]
 path = "*/migrations/*.py"
 skip = 1
 
 [tool.pylama.linter.vulture]
-min-confidence = 80
+min-confidence = 65
+
+[tool.mypy]
+packages = ["apps", "tests", "templates", "toolbox"]
+plugins = ["mypy_django_plugin.main"]
+ignore_missing_imports = true
+cache_dir = "/dev/null"
+
+[tool.django-stubs]
+django_settings_module = "toolbox.settings"
+
+[tool.pylint]
+init-hook = 'import sys; sys.path.append("apps")'
+jobs = 1
+recursive = true
+load-plugins = ["pylint_django"]
+django-settings-module = "toolbox.settings"
+output-format = "colorized"
+ignore-path = ["^.*/migrations/.*$"]
+disable = "duplicate-code"
 
 [tool.ruff]
 line-length = 88

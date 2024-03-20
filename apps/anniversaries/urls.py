@@ -1,4 +1,4 @@
-"""URL configuration for the 'core' application."""
+"""URL configuration for the 'anniversaries' application."""
 
 from anniversaries.views import calendar_detail
 from django.urls import URLPattern, URLResolver, path

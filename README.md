@@ -3,10 +3,10 @@ A generic application to make the development of Django modules easier.
 
 ![version](https://img.shields.io/badge/version-2.6.2-blue)
 ![python_version](https://img.shields.io/badge/python-3.12-blue)
-![bandit_action](https://github.com/jlebunetel/toolbox/actions/workflows/bandit.yml/badge.svg)
-![pip-audit_action](https://github.com/jlebunetel/toolbox/actions/workflows/pip-audit.yml/badge.svg)
 ![pre-commit_action](https://github.com/jlebunetel/toolbox/actions/workflows/pre-commit.yml/badge.svg)
 ![pytest_action](https://github.com/jlebunetel/toolbox/actions/workflows/pytest.yml/badge.svg)
+![bandit_action](https://github.com/jlebunetel/toolbox/actions/workflows/bandit.yml/badge.svg)
+![pip-audit_action](https://github.com/jlebunetel/toolbox/actions/workflows/pip-audit.yml/badge.svg)
 
 ## Features
 

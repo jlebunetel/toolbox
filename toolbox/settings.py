@@ -103,6 +103,7 @@ INSTALLED_APPS: list[str] = [
     "allauth",
     "allauth.account",
     "anniversaries.apps.AnniversariesConfig",
+    "labbooks.apps.LabbooksConfig",
 ]
 
 MIDDLEWARE: list[str] = [

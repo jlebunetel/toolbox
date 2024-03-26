@@ -9,8 +9,12 @@ requires-python = ">= 3.12"
 dependencies = [
     "django >= 5.0",
     "django-allauth",
+    "django-filter",
     "django-stubs[compatible-mypy]",
+    "djangorestframework",
+    "djangorestframework-stubs[compatible-mypy]",
     "icalendar",
+    "markdown",
     "psycopg[binary,pool]",
     "pydantic",
     "pydantic-settings",

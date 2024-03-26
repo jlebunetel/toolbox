@@ -1,0 +1,14 @@
+{% extends "rest_framework/base.html" %}
+
+{% block bootstrap_theme %}
+{{ block.super }}
+{% if request.site.sitecustomization.api_theme != 'default' %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@3.4.1/{{ request.site.sitecustomization.api_theme }}/bootstrap.min.css">
+{% endif %}
+{% endblock bootstrap_theme %}
+
+{% block title %}{% if name %}{{ name }} | {% endif %}{{ request.site.name }}{% endblock title %}
+
+{% block branding %}
+<a class="navbar-brand" href="{% url 'core:landing' %}">{{ request.site.name }}</a>
+{% endblock branding %}

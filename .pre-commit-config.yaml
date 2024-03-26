@@ -15,6 +15,7 @@ repos:
     rev: v4.5.0
     hooks:
       - id: check-added-large-files
+        args: ["--maxkb=1000"]
       - id: check-json
       - id: pretty-format-json
         args: ["--autofix", "--indent=4", "--no-sort-keys"]
@@ -46,8 +47,12 @@ repos:
         additional_dependencies:
           [
             "django-allauth",
+            "django-filter",
             "django-stubs[compatible-mypy]",
+            "djangorestframework",
+            "djangorestframework-stubs[compatible-mypy]",
             "icalendar",
+            "markdown",
             "psycopg[binary,pool]",
             "pydantic",
             "pydantic-settings",
@@ -62,8 +67,12 @@ repos:
         additional_dependencies:
           [
             "django-allauth",
+            "django-filter",
             "django-stubs[compatible-mypy]",
+            "djangorestframework",
+            "djangorestframework-stubs[compatible-mypy]",
             "icalendar",
+            "markdown",
             "psycopg[binary,pool]",
             "pydantic",
             "pydantic-settings",

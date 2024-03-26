@@ -32,6 +32,8 @@ class Settings(BaseSettings):
     site_domain: str = "example.com"
     site_name: str = "My Toolbox"
 
+    api_version: int = 1
+
     superuser_username: str = "demo"
     superuser_password: str = "demo"
     superuser_email: str = "demo@example.com"
@@ -79,6 +81,7 @@ APPS_DIR: Path = BASE_DIR / "apps"
 sys.path.append(str(APPS_DIR))
 ROOT_URLCONF: str = "toolbox.urls"
 WSGI_APPLICATION: str = "toolbox.wsgi.application"
+API_VERSION: int = settings.api_version
 
 SITE_ID: int = 1
 CUSTOM_SITE_DOMAIN: str = settings.site_domain
@@ -102,6 +105,7 @@ INSTALLED_APPS: list[str] = [
     "core.apps.CoreConfig",
     "allauth",
     "allauth.account",
+    "rest_framework",
     "anniversaries.apps.AnniversariesConfig",
     "labbooks.apps.LabbooksConfig",
 ]
@@ -214,6 +218,23 @@ STATIC_URL: str = "static/"
 DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
 
 FORM_RENDERER = "toolbox.settings.CustomFormRenderer"
+
+REST_FRAMEWORK: dict[str, list[str]] = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+    "DEFAULT_FILTER_BACKENDS": [
+        "django_filters.rest_framework.DjangoFilterBackend",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAdminUser",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        "rest_framework.renderers.BrowsableAPIRenderer",
+    ],
+}
 
 LOGGING_CONFIG: Any = None
 LOGGING: dict[str, Any] = {

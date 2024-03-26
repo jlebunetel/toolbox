@@ -23,6 +23,33 @@ class SiteCustomization(models.Model):
         default=False, verbose_name=_("is open for signup")
     )
 
+    API_THEME_CHOICES = [
+        ("default", "default"),
+        ("cerulean", "cerulean"),
+        ("cosmo", "cosmo"),
+        ("cyborg", "cyborg"),
+        ("darkly", "darkly"),
+        ("flatly", "flatly"),
+        ("journal", "journal"),
+        ("lumen", "lumen"),
+        ("paper", "paper"),
+        ("readable", "readable"),
+        ("sandstone", "sandstone"),
+        ("simplex", "simplex"),
+        ("slate", "slate"),
+        ("spacelab", "spacelab"),
+        ("superhero", "superhero"),
+        ("united", "united"),
+        ("yeti", "yeti"),
+    ]
+
+    api_theme = models.CharField(
+        max_length=16,
+        choices=API_THEME_CHOICES,
+        default="default",
+        verbose_name=_("API Bootstrap theme"),
+    )
+
     class Meta:
         """Metadata options class."""
 

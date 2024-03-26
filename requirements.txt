@@ -6,7 +6,7 @@
 #
 annotated-types==0.6.0
     # via pydantic
-asgiref==3.7.2
+asgiref==3.8.1
     # via django
 certifi==2024.2.2
     # via requests
@@ -21,25 +21,39 @@ defusedxml==0.7.1
 django==5.0.3
     # via
     #   django-allauth
+    #   django-filter
     #   django-stubs
     #   django-stubs-ext
+    #   djangorestframework
     #   toolbox (pyproject.toml)
 django-allauth==0.61.1
     # via toolbox (pyproject.toml)
-django-stubs==4.2.7
+django-filter==24.1
     # via toolbox (pyproject.toml)
+django-stubs==4.2.7
+    # via
+    #   djangorestframework-stubs
+    #   toolbox (pyproject.toml)
 django-stubs-ext==4.2.7
     # via django-stubs
-icalendar==5.0.11
+djangorestframework==3.15.1
+    # via toolbox (pyproject.toml)
+djangorestframework-stubs==3.14.5
+    # via toolbox (pyproject.toml)
+icalendar==5.0.12
     # via toolbox (pyproject.toml)
 idna==3.6
     # via requests
+markdown==3.6
+    # via toolbox (pyproject.toml)
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
 mypy==1.7.1
-    # via django-stubs
+    # via
+    #   django-stubs
+    #   djangorestframework-stubs
 mypy-extensions==1.0.0
     # via mypy
 oauthlib==3.2.2
@@ -77,6 +91,7 @@ pytz==2024.1
 requests==2.31.0
     # via
     #   django-allauth
+    #   djangorestframework-stubs
     #   requests-oauthlib
 requests-oauthlib==1.4.0
     # via django-allauth
@@ -89,15 +104,22 @@ sqlparse==0.4.4
 types-pytz==2024.1.0.20240203
     # via django-stubs
 types-pyyaml==6.0.12.20240311
-    # via django-stubs
+    # via
+    #   django-stubs
+    #   djangorestframework-stubs
+types-requests==2.31.0.20240311
+    # via djangorestframework-stubs
 typing-extensions==4.10.0
     # via
     #   django-stubs
     #   django-stubs-ext
+    #   djangorestframework-stubs
     #   mypy
     #   psycopg
     #   psycopg-pool
     #   pydantic
     #   pydantic-core
 urllib3==2.2.1
-    # via requests
+    # via
+    #   requests
+    #   types-requests

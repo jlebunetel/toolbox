@@ -46,7 +46,9 @@ repos:
       - id: pylint
         additional_dependencies:
           [
+            "crispy-bootstrap3",
             "django-allauth",
+            "django-crispy-forms",
             "django-filter",
             "django-stubs[compatible-mypy]",
             "djangorestframework",
@@ -66,7 +68,9 @@ repos:
       - id: mypy
         additional_dependencies:
           [
+            "crispy-bootstrap3",
             "django-allauth",
+            "django-crispy-forms",
             "django-filter",
             "django-stubs[compatible-mypy]",
             "djangorestframework",

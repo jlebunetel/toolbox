@@ -106,6 +106,9 @@ INSTALLED_APPS: list[str] = [
     "allauth",
     "allauth.account",
     "rest_framework",
+    "django_filters",
+    "crispy_forms",
+    "crispy_bootstrap3",
     "anniversaries.apps.AnniversariesConfig",
     "budgets.apps.BudgetsConfig",
     "labbooks.apps.LabbooksConfig",
@@ -227,6 +230,8 @@ REST_FRAMEWORK: dict[str, list[str]] = {
     ],
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
+        "rest_framework.filters.OrderingFilter",
+        "rest_framework.filters.SearchFilter",
     ],
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAdminUser",
@@ -236,6 +241,9 @@ REST_FRAMEWORK: dict[str, list[str]] = {
         "rest_framework.renderers.BrowsableAPIRenderer",
     ],
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS: str = "bootstrap3"
+CRISPY_TEMPLATE_PACK: str = "bootstrap3"
 
 LOGGING_CONFIG: Any = None
 LOGGING: dict[str, Any] = {

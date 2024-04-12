@@ -7,8 +7,10 @@ name = "toolbox"
 dynamic = ["version"]
 requires-python = ">= 3.12"
 dependencies = [
+    "crispy-bootstrap3",
     "django >= 5.0",
     "django-allauth",
+    "django-crispy-forms",
     "django-filter",
     "django-stubs[compatible-mypy]",
     "djangorestframework",

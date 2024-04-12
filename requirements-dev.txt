@@ -12,7 +12,7 @@ asgiref==3.8.1
     # via django
 astroid==3.1.0
     # via pylint
-build==1.1.1
+build==1.2.1
     # via pip-tools
 certifi==2024.2.2
     # via requests
@@ -28,7 +28,9 @@ click==8.1.7
     # via pip-tools
 colorama==0.4.6
     # via commitizen
-commitizen==3.20.0
+commitizen==3.22.0
+    # via toolbox (pyproject.toml)
+crispy-bootstrap3==2024.1
     # via toolbox (pyproject.toml)
 cryptography==42.0.5
     # via pyjwt
@@ -40,9 +42,11 @@ dill==0.3.8
     # via pylint
 distlib==0.3.8
     # via virtualenv
-django==5.0.3
+django==5.0.4
     # via
+    #   crispy-bootstrap3
     #   django-allauth
+    #   django-crispy-forms
     #   django-filter
     #   django-stubs
     #   django-stubs-ext
@@ -50,7 +54,11 @@ django==5.0.3
     #   toolbox (pyproject.toml)
 django-allauth==0.61.1
     # via toolbox (pyproject.toml)
-django-filter==24.1
+django-crispy-forms==2.1
+    # via
+    #   crispy-bootstrap3
+    #   toolbox (pyproject.toml)
+django-filter==24.2
     # via toolbox (pyproject.toml)
 django-stubs==4.2.7
     # via
@@ -62,13 +70,13 @@ djangorestframework==3.15.1
     # via toolbox (pyproject.toml)
 djangorestframework-stubs==3.14.5
     # via toolbox (pyproject.toml)
-filelock==3.13.1
+filelock==3.13.4
     # via virtualenv
 icalendar==5.0.12
     # via toolbox (pyproject.toml)
 identify==2.5.35
     # via pre-commit
-idna==3.6
+idna==3.7
     # via requests
 importlib-metadata==7.1.0
     # via commitizen
@@ -107,7 +115,7 @@ platformdirs==4.2.0
     # via
     #   pylint
     #   virtualenv
-pre-commit==3.6.2
+pre-commit==3.7.0
     # via toolbox (pyproject.toml)
 prompt-toolkit==3.0.36
     # via questionary
@@ -117,13 +125,13 @@ psycopg-binary==3.1.18
     # via psycopg
 psycopg-pool==3.2.1
     # via psycopg
-pycparser==2.21
+pycparser==2.22
     # via cffi
-pydantic==2.6.4
+pydantic==2.7.0
     # via
     #   pydantic-settings
     #   toolbox (pyproject.toml)
-pydantic-core==2.16.3
+pydantic-core==2.18.1
     # via pydantic
 pydantic-settings==2.2.1
     # via toolbox (pyproject.toml)
@@ -165,11 +173,11 @@ requests==2.31.0
     #   django-allauth
     #   djangorestframework-stubs
     #   requests-oauthlib
-requests-oauthlib==1.4.0
+requests-oauthlib==2.0.0
     # via django-allauth
 rich==13.7.1
     # via toolbox (pyproject.toml)
-ruff==0.3.4
+ruff==0.3.7
     # via toolbox (pyproject.toml)
 six==1.16.0
     # via python-dateutil
@@ -187,9 +195,9 @@ types-pyyaml==6.0.12.20240311
     # via
     #   django-stubs
     #   djangorestframework-stubs
-types-requests==2.31.0.20240311
+types-requests==2.31.0.20240406
     # via djangorestframework-stubs
-typing-extensions==4.10.0
+typing-extensions==4.11.0
     # via
     #   django-stubs
     #   django-stubs-ext

@@ -41,29 +41,16 @@
         "pylint_django",
         "--django-settings-module=toolbox.settings"
     ],
-    "python.analysis.diagnosticSeverityOverrides": {
-        "reportArgumentType": "information",
-        "reportAssignmentType": "information",
-        "reportAttributeAccessIssue": "information",
-        "reportCallIssue": "none",
-        "reportIndexIssue": "information",
-        "reportIncompatibleMethodOverride": "information",
-        "reportMissingParameterType": "information",
-        "reportMissingTypeArgument": "information",
-        "reportMissingTypeStubs": "information",
-        "reportReturnType": "information",
-        "reportUnknownArgumentType": "information",
-        "reportUnknownMemberType": "information",
-        "reportUnknownParameterType": "information",
-        "reportUnknownVariableType": "information",
-        "reportUntypedBaseClass": "information",
-        "reportUnusedImport": "information"
-    },
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.exclude": [
+        "temp",
+        "venv"
+    ],
     "python.analysis.extraPaths": [
         "${workspaceFolder}/apps"
     ],
-    "python.analysis.diagnosticMode": "workspace",
-    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.logLevel": "Information",
+    "python.analysis.typeCheckingMode": "off",
     "python.createEnvironment.contentButton": "hide",
     "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
     "python.terminal.activateEnvironment": false,

@@ -10,4 +10,4 @@ class BudgetsConfig(AppConfig):
 
     label: str = "budgets"
     name: str = "budgets"
-    verbose_name: StrOrPromise = _("Budgets application")
+    verbose_name: StrOrPromise = _("Budgets")

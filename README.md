@@ -41,7 +41,7 @@ To start the demo application, please run:
 make quickstart
 ```
 
-Wait a bit for the application to build, then you can access it with your favorite internet browser to the following address: [http://127.0.0.1:8000](http://localhost:8080).
+Wait a bit for the application to build, then you can access it with your favorite internet browser to the following address: [http://127.0.0.1:8000](http://localhost:8000).
 
 > :memo: The default superuser login and password are: `demo` / `demo`.
 

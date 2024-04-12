@@ -127,7 +127,7 @@ omit = [
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "2.6.3"
+version = "2.7.0"
 version_files = [
     "pyproject.toml:version",
     "README.md:version-",

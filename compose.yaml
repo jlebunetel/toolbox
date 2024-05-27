@@ -1,7 +1,7 @@
 services:
   db:
     image: "postgres:14"
-    restart: always
+    restart: on-failure
     shm_size: 128mb
     environment:
       POSTGRES_DB: "postgres"
@@ -10,10 +10,13 @@ services:
     ports:
       - "15432:5432"
     volumes:
-      - ./temp/postgresql/data:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
 
   adminer:
-    restart: always
+    restart: on-failure
     image: adminer
     ports:
       - "8080:8080"
+
+volumes:
+  db-data:

@@ -59,9 +59,15 @@
     "python.terminal.focusAfterLaunch": true,
     "ruff.enable": true,
     "ruff.fixAll": true,
+    "ruff.format.args": [
+        "--config=${workspaceFolder}/pyproject.toml"
+    ],
     "ruff.ignoreStandardLibrary": true,
     "ruff.interpreter": [
         "${workspaceFolder}/venv/bin/python"
+    ],
+    "ruff.lint.args": [
+        "--config=${workspaceFolder}/pyproject.toml"
     ],
     "ruff.lint.enable": true,
     "ruff.lint.run": "onSave",

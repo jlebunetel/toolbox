@@ -101,6 +101,7 @@ INSTALLED_APPS: list[str] = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.sites",
+    "django.contrib.humanize",
     "django.forms",
     "core.apps.CoreConfig",
     "allauth",

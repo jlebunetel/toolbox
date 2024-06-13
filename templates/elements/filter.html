@@ -1,0 +1,17 @@
+{% load i18n %}
+<div class="box">
+    <p class="title is-5">{% translate 'Filters' %}</p>
+
+    <form method="get">
+        {{ filter.form.as_p }}
+
+        <div class="field is-grouped">
+            <div class="control">
+                <input class="button is-small is-info" type="submit" value="{% translate 'Search' %}">
+            </div>
+            <div class="control">
+                <a class="button is-small is-info is-light" href="?">{% translate 'Clear' %}</a>
+            </div>
+        </div>
+    </form>
+</div>

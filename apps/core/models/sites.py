@@ -65,7 +65,7 @@ class SiteCustomization(models.Model):
         """Returns a description of the model (for customers)."""
         return self.site.name or str(_("Unknown"))
 
-    def save(
+    def save(  # type: ignore # pylint: disable=arguments-differ # BUG
         self,
         force_insert: bool = False,
         force_update: bool = False,

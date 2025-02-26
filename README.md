@@ -32,7 +32,7 @@ git clone git@github.com:jlebunetel/toolbox.git
 You need an accessible _PostgreSQL_ database before starting the application. You can use _Docker Compose_ to get one conveniently:
 
 ```bash
-docker compose run
+docker compose up
 ```
 
 To start the demo application, please run:

@@ -28,7 +28,7 @@ class User(AbstractUser):
 
     last_name = models.CharField(_("last name"), max_length=255, blank=True)
 
-    class Meta(AbstractUser.Meta):
+    class Meta(AbstractUser.Meta):  # type: ignore
         """Metadata options class."""
 
         ordering: list[str] = ["-date_joined"]

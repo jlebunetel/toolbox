@@ -34,7 +34,9 @@
     ],
     "mypy-type-checker.reportingScope": "workspace",
     "pylint.path": [
-        "${workspaceFolder}/venv/bin/pylint"
+        "${workspaceFolder}/venv/bin/python",
+        "-m",
+        "pylint"
     ],
     "pylint.args": [
         "--load-plugins",
@@ -57,26 +59,10 @@
     "python.terminal.activateEnvInCurrentTerminal": false,
     "python.terminal.executeInFileDir": false,
     "python.terminal.focusAfterLaunch": true,
-    "ruff.enable": true,
-    "ruff.fixAll": true,
-    "ruff.format.args": [
-        "--config=${workspaceFolder}/pyproject.toml"
-    ],
-    "ruff.ignoreStandardLibrary": true,
-    "ruff.interpreter": [
-        "${workspaceFolder}/venv/bin/python"
-    ],
-    "ruff.lint.args": [
-        "--config=${workspaceFolder}/pyproject.toml"
-    ],
-    "ruff.lint.enable": true,
-    "ruff.lint.run": "onSave",
-    "ruff.organizeImports": true,
     "ruff.path": [
         "${workspaceFolder}/venv/bin/ruff"
     ],
-    "ruff.showNotifications": "always",
-    "ruff.trace.server": "messages",
+    "ruff.configuration": "${workspaceFolder}/pyproject.toml",
     "workbench.colorCustomizations": {
         "statusBar.background": "#eb6864"
     },

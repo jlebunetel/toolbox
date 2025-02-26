@@ -1,18 +1,18 @@
 fail_fast: false
 repos:
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v3.1.0
+    rev: v4.0.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]
         args: ["--force-scope", "--strict"]
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.20.0
+    rev: v4.2.2
     hooks:
       - id: commitizen
         stages: [commit-msg]
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: check-added-large-files
         args: ["--maxkb=1000"]
@@ -31,7 +31,7 @@ repos:
         args: ["--fix=lf"]
         description: Forces to replace line ending by the UNIX 'lf' character.
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.3.3
+    rev: v0.9.7
     hooks:
       - id: ruff # Run the linter.
       - id: ruff-format # Run the formatter.
@@ -41,16 +41,15 @@ repos:
       - id: pylama
         additional_dependencies: ["pylama[all,toml]", "setuptools"]
   - repo: https://github.com/pycqa/pylint
-    rev: v3.1.0
+    rev: v3.3.4
     hooks:
       - id: pylint
-        additional_dependencies:
-          [
+        additional_dependencies: [
             "crispy-bootstrap3",
             "django-allauth",
             "django-crispy-forms",
             "django-filter",
-            "django-stubs[compatible-mypy]",
+            "django-stubs[compatible-mypy] == 5.0.4", # BUG
             "djangorestframework",
             "djangorestframework-stubs[compatible-mypy]",
             "icalendar",
@@ -63,16 +62,16 @@ repos:
             "rich",
           ]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.9.0
+    rev: v1.11.2
     hooks:
       - id: mypy
-        additional_dependencies:
-          [
+        pass_filenames: false
+        additional_dependencies: [
             "crispy-bootstrap3",
             "django-allauth",
             "django-crispy-forms",
             "django-filter",
-            "django-stubs[compatible-mypy]",
+            "django-stubs[compatible-mypy] == 5.0.4", # BUG
             "djangorestframework",
             "djangorestframework-stubs[compatible-mypy]",
             "icalendar",
@@ -83,3 +82,19 @@ repos:
             "python-json-logger",
             "rich",
           ]
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.3
+    hooks:
+      - id: bandit
+  - repo: https://github.com/jendrikseipp/vulture
+    rev: v2.14
+    hooks:
+      - id: vulture
+  - repo: local
+    hooks:
+      - id: radon
+        name: radon
+        description: Analyze the given Python modules and compute Cyclomatic Complexity (CC).
+        entry: radon cc src
+        language: python
+        additional_dependencies: ["radon"]

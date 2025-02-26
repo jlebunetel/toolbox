@@ -1,9 +1,10 @@
 """Generic admin mixins."""
 
 from core.models.mixins import SensitiveMixin
+from django.contrib import admin
 
 
-class SensitiveAdminMixin:
+class SensitiveAdminMixin(admin.ModelAdmin):
     """Mixin to enhance the security on sensitive models."""
 
     def save_model(self, request, obj, form, change):

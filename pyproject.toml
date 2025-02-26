@@ -8,11 +8,11 @@ dynamic = ["version"]
 requires-python = ">= 3.12"
 dependencies = [
     "crispy-bootstrap3",
-    "django >= 5.0",
+    "django >= 5.0 , < 5.1",                      # BUG
     "django-allauth",
     "django-crispy-forms",
     "django-filter",
-    "django-stubs[compatible-mypy]",
+    "django-stubs[compatible-mypy] == 5.0.4",     # BUG
     "djangorestframework",
     "djangorestframework-stubs[compatible-mypy]",
     "icalendar",
@@ -42,12 +42,14 @@ classifiers = [
 [project.optional-dependencies]
 dev = [
     "commitizen",
-    "mypy",
+    "mypy >= 1.11 , < 1.12", # BUG
     "pip-tools",
     "pre-commit",
     "pylint",
     "pylint-django",
+    "radon",
     "ruff",
+    "vulture",
 ]
 test = ["pytest", "pytest-cov", "pytest-django", "pytest-xdist[psutil]"]
 
@@ -56,6 +58,45 @@ Homepage = "https://toolbox.lebunetel.com"
 Repository = "https://github.com/jlebunetel/toolbox"
 Issues = "https://github.com/jlebunetel/toolbox/issues"
 Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "2.8.0"
+version_files = [
+    "pyproject.toml:version",
+    "README.md:version-",
+    "toolbox/__init__.py:__version__",
+]
+tag_format = "$version"
+update_changelog_on_bump = true
+annotated_tag = true
+
+[tool.coverage.run]
+omit = [
+    "manage.py",
+    "toolbox/asgi.py",
+    "toolbox/settings.py",
+    "toolbox/urls.py",
+    "toolbox/wsgi.py",
+]
+
+[tool.django-stubs]
+django_settings_module = "toolbox.settings"
+
+[tool.hatch.version]
+path = "toolbox/__init__.py"
+
+[tool.mypy]
+packages = ["apps", "tests", "templates", "toolbox"]
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+ignore_missing_imports = true
+cache_dir = "/dev/null"
+check_untyped_defs = true
+
+[tool.pip-tools]
+generate-hashes = false
+upgrade = true
+strip-extras = true
 
 [tool.pylama]
 format = "pylint"
@@ -68,24 +109,30 @@ skip = 1
 [tool.pylama.linter.vulture]
 min-confidence = 65
 
-[tool.mypy]
-packages = ["apps", "tests", "templates", "toolbox"]
-plugins = ["mypy_django_plugin.main"]
-ignore_missing_imports = true
-cache_dir = "/dev/null"
-
-[tool.django-stubs]
-django_settings_module = "toolbox.settings"
-
 [tool.pylint]
+django-settings-module = "toolbox.settings"
+ignore-path = ["^.*/migrations/.*$", "venv"]
 init-hook = 'import sys; sys.path.append("apps")'
 jobs = 1
-recursive = true
 load-plugins = ["pylint_django"]
-django-settings-module = "toolbox.settings"
+max-line-length = 88
 output-format = "colorized"
-ignore-path = ["^.*/migrations/.*$"]
-disable = "duplicate-code"
+recursive = true
+disable = ["duplicate-code"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "--import-mode=importlib",
+    "--numprocesses=auto",
+    "--cov=./",
+    "--cov-report=term:skip-covered",
+    "--cov-report=html",
+]
+testpaths = ["tests"]
+DJANGO_SETTINGS_MODULE = "toolbox.settings"
+
+[tool.radon]
+cc_min = "B"
 
 [tool.ruff]
 line-length = 88
@@ -101,41 +148,6 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
-[tool.pip-tools]
-generate-hashes = false
-upgrade = true
-strip-extras = true
-
-[tool.pytest.ini_options]
-addopts = """
---numprocesses=auto \
---cov=./ \
---cov-report=term:skip-covered \
---cov-report=html \
-"""
-testpaths = ["tests"]
-DJANGO_SETTINGS_MODULE = "toolbox.settings"
-
-[tool.coverage.run]
-omit = [
-    "manage.py",
-    "toolbox/asgi.py",
-    "toolbox/settings.py",
-    "toolbox/urls.py",
-    "toolbox/wsgi.py",
-]
-
-[tool.commitizen]
-name = "cz_conventional_commits"
-version = "2.8.0"
-version_files = [
-    "pyproject.toml:version",
-    "README.md:version-",
-    "toolbox/__init__.py:__version__",
-]
-tag_format = "$version"
-update_changelog_on_bump = true
-annotated_tag = true
-
-[tool.hatch.version]
-path = "toolbox/__init__.py"
+[tool.vulture]
+paths = ["apps", "templates", "tests", "toolbox"]
+min_confidence = 80

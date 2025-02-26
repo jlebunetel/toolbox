@@ -9,14 +9,15 @@ annotated-types==0.7.0
 asgiref==3.8.1
     # via
     #   django
+    #   django-allauth
     #   django-stubs
-certifi==2024.2.2
+certifi==2025.1.31
     # via requests
-charset-normalizer==3.3.2
+charset-normalizer==3.4.1
     # via requests
 crispy-bootstrap3==2024.1
     # via toolbox (pyproject.toml)
-django==5.0.6
+django==5.0.12
     # via
     #   crispy-bootstrap3
     #   django-allauth
@@ -26,79 +27,77 @@ django==5.0.6
     #   django-stubs-ext
     #   djangorestframework
     #   toolbox (pyproject.toml)
-django-allauth==0.63.2
+django-allauth==65.4.1
     # via toolbox (pyproject.toml)
-django-crispy-forms==2.1
+django-crispy-forms==2.3
     # via
     #   crispy-bootstrap3
     #   toolbox (pyproject.toml)
-django-filter==24.2
+django-filter==25.1
     # via toolbox (pyproject.toml)
-django-stubs==5.0.0
+django-stubs==5.0.4
     # via
     #   djangorestframework-stubs
     #   toolbox (pyproject.toml)
-django-stubs-ext==5.0.0
+django-stubs-ext==5.1.3
     # via django-stubs
-djangorestframework==3.15.1
+djangorestframework==3.15.2
     # via toolbox (pyproject.toml)
-djangorestframework-stubs==3.15.0
+djangorestframework-stubs==3.15.1
     # via toolbox (pyproject.toml)
-icalendar==5.0.12
+icalendar==6.1.1
     # via toolbox (pyproject.toml)
-idna==3.7
+idna==3.10
     # via requests
-markdown==3.6
+markdown==3.7
     # via toolbox (pyproject.toml)
 markdown-it-py==3.0.0
     # via rich
 mdurl==0.1.2
     # via markdown-it-py
-mypy==1.10.0
+mypy==1.11.2
     # via
     #   django-stubs
     #   djangorestframework-stubs
 mypy-extensions==1.0.0
     # via mypy
-psycopg==3.1.19
+psycopg==3.2.5
     # via toolbox (pyproject.toml)
-psycopg-binary==3.1.19
+psycopg-binary==3.2.5
     # via psycopg
-psycopg-pool==3.2.2
+psycopg-pool==3.2.5
     # via psycopg
-pydantic==2.7.1
+pydantic==2.10.6
     # via
     #   pydantic-settings
     #   toolbox (pyproject.toml)
-pydantic-core==2.18.2
+pydantic-core==2.27.2
     # via pydantic
-pydantic-settings==2.2.1
+pydantic-settings==2.8.0
     # via toolbox (pyproject.toml)
-pygments==2.18.0
+pygments==2.19.1
     # via rich
 python-dateutil==2.9.0.post0
     # via icalendar
 python-dotenv==1.0.1
     # via pydantic-settings
-python-json-logger==2.0.7
+python-json-logger==3.2.1
     # via toolbox (pyproject.toml)
-pytz==2024.1
-    # via icalendar
-requests==2.32.2
+requests==2.32.3
     # via djangorestframework-stubs
-rich==13.7.1
+rich==13.9.4
     # via toolbox (pyproject.toml)
-six==1.16.0
+six==1.17.0
     # via python-dateutil
-sqlparse==0.5.0
+sqlparse==0.5.3
     # via django
-types-pyyaml==6.0.12.20240311
+types-pyyaml==6.0.12.20241230
     # via
     #   django-stubs
     #   djangorestframework-stubs
-types-requests==2.32.0.20240523
+types-requests==2.32.0.20241016
     # via djangorestframework-stubs
-typing-extensions==4.12.0
+typing-extensions==4.12.2
     # via
     #   django-stubs
     #   django-stubs-ext
@@ -108,7 +107,9 @@ typing-extensions==4.12.0
     #   psycopg-pool
     #   pydantic
     #   pydantic-core
-urllib3==2.2.1
+tzdata==2025.1
+    # via icalendar
+urllib3==2.3.0
     # via
     #   requests
     #   types-requests

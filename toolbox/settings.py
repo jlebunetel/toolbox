@@ -178,7 +178,7 @@ AUTH_PASSWORD_VALIDATORS: list[dict[str, str]] = [
 AUTH_USER_MODEL: str = "accounts.User"
 
 ACCOUNT_ADAPTER: str = "accounts.adapter.CustomUserAccountAdapter"
-ACCOUNT_AUTHENTICATION_METHOD: str = "username_email"
+ACCOUNT_LOGIN_METHODS: set[str] = {"username", "email"}
 ACCOUNT_CHANGE_EMAIL: bool = True
 
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS: int = 3

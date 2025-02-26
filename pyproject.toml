@@ -61,7 +61,7 @@ Changelog = "https://github.com/jlebunetel/toolbox/blob/main/CHANGELOG.md"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "2.8.0"
+version = "2.8.1"
 version_files = [
     "pyproject.toml:version",
     "README.md:version-",

@@ -15,6 +15,7 @@ URL_APP_LIST: list[str] = [
     "accounts",
     "anniversaries",
     "labbooks",
+    "libraries",
 ]
 
 

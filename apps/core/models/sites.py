@@ -67,12 +67,14 @@ class SiteCustomization(models.Model):
 
     def save(  # type: ignore # pylint: disable=arguments-differ # BUG
         self,
+        *args: str,
         force_insert: bool = False,
         force_update: bool = False,
         using: str | None = None,
         update_fields: Iterable[str] | None = None,
     ) -> None:
         """Saves the current instance."""
+        del args
         super().save(
             force_insert=force_insert,
             force_update=force_update,

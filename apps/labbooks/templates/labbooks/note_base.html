@@ -1,0 +1,10 @@
+{% extends "labbooks/base.html" %}
+{% load i18n %}
+
+{% block breadcrumb %}
+{{ block.super }}
+{% url 'labbooks:note-list' as the_url %}
+<li{% if request.path == the_url %} class="is-active"{% endif %}>
+    <a href="{{ the_url }}">{% translate 'Notes' %}</a>
+</li>
+{% endblock breadcrumb %}

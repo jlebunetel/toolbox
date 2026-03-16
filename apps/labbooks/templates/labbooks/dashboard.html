@@ -1,0 +1,21 @@
+{% extends "labbooks/base.html" %}
+{% load allauth i18n %}
+
+{% block head_title %}{% trans "Labbooks" %} > {% trans "Dashboard" %}{% endblock head_title %}
+
+{% block content %}
+<div class="block has-text-centered">
+    <h1 class="title">{% trans "Labbooks" %}</h1>
+    <h2 class="subtitle">{% trans "Dashboard" %}</h2>
+</div>
+<hr>
+<nav class="level">
+    <div class="level-item has-text-centered">
+        <a href="{% url 'labbooks:note-list' %}">
+            <p class="heading">{% trans "Notes" %}</p>
+            <p class="title">3,456</p>
+        </a>
+    </div>
+</nav>
+<hr>
+{% endblock content %}

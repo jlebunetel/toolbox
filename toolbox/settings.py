@@ -221,6 +221,9 @@ USE_TZ: bool = True
 STATIC_ROOT: Path = BASE_DIR / "static"
 STATIC_URL: str = "static/"
 
+MEDIA_ROOT: Path = BASE_DIR / "media"
+MEDIA_URL: str = "media/"
+
 DEFAULT_AUTO_FIELD: str = "django.db.models.BigAutoField"
 
 FORM_RENDERER = "toolbox.settings.CustomFormRenderer"

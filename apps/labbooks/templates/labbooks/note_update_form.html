@@ -1,0 +1,44 @@
+{% extends "labbooks/note_base.html" %}
+{% load i18n %}
+
+{% block head_title %}{{ object.title }}{% endblock head_title %}
+
+{% block breadcrumb %}
+{{ block.super }}
+<li class="is-active"><a>{{ object }}</a></li>
+{% endblock breadcrumb %}
+
+{% block content %}
+<h1 class="title">{{ object.title }}</h1>
+<div class="subtitle">{{ object.description }}</div>
+<div class="block">{{ object.changed_at }}</div>
+
+<div x-data="{ tab: 'read' }">
+    <div class="tabs is-boxed">
+        <ul>
+            <li :class="tab == 'read' ? 'is-active' : ''"><a x-on:click="tab = 'read'">{% translate 'Read' %}</a></li>
+            <li :class="tab == 'edit' ? 'is-active' : ''"><a x-on:click="tab = 'edit'">{% translate 'Edit' %}</a></li>
+        </ul>
+    </div>
+
+    <div class="content" x-show="tab == 'read'">
+        {{ object.html|safe }}
+    </div>
+
+    <form method="post" x-show="tab == 'edit'">
+        {% csrf_token %}
+        {{ form.as_p }}
+    
+        <div class="field is-grouped">
+            <div class="control">
+                <input class="button is-primary" type="submit" value="{% translate 'Save' %}">
+            </div>
+            <div class="control">
+                <a class="button is-danger" href="{% url 'labbooks:note-delete' object.pk %}">{% translate 'Delete' %}</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock content %}

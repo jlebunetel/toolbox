@@ -15,6 +15,7 @@ URL_APP_LIST: list[str] = [
     "accounts",
     "anniversaries",
     "labbooks",
+    "libraries",
 ]
 
 
@@ -68,3 +69,9 @@ urlpatterns += [
     path(f"{API_PREFIX}{app_name}/", include(f"{app_name}.api"))
     for app_name in API_APP_LIST
 ]
+
+# Serve media files during development
+if settings.DEBUG:
+    from django.conf.urls.static import static
+
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

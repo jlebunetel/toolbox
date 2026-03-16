@@ -1,0 +1,35 @@
+{% extends "labbooks/note_base.html" %}
+{% load i18n %}
+{% load humanize %}
+
+{% block head_title %}{{ object.title }}{% endblock head_title %}
+
+{% block content %}
+<div class="columns">
+    <div class="column">
+        <h1 class="title">{% translate 'Notes' %}</h1>
+    </div>
+    <div class="column has-text-right">
+        <a class="button is-small is-link" href="{% url 'labbooks:note-create' %}">{% translate 'New note' %}</a>
+    </div>
+</div>
+
+{% for object in object_list %}
+    <div class="block">
+        <div class="card">
+            <div class="card-content">
+                <p class="is-size-4 has-text-weight-bold"><a class="has-text-dark" href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
+                <p class="is-size-7 has-text-grey">Publié {{ object.created_at | naturaltime }}, mis à jour {{ object.changed_at | naturaltime }} • <a>{{ object.changed_by }}</a></p>
+                <p class="my-2">{{ object.description }}</p>
+                <p>
+                    {% for tag in object.tags %}
+                    <a class="tag is-info is-light" href="?tags={{ tag }}">{{ tag }}</a>
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% empty %}
+    {% translate 'No notes found.' %}
+{% endfor %}
+{% endblock content %}

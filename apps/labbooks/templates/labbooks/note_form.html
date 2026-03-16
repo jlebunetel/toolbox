@@ -1,0 +1,28 @@
+{% extends "labbooks/note_base.html" %}
+{% load i18n %}
+
+{% block head_title %}{{ object.title }}{% endblock head_title %}
+
+{% block breadcrumb %}
+{{ block.super }}
+<li class="is-active"><a>{% translate 'New note' %}</a></li>
+{% endblock breadcrumb %}
+
+{% block content %}
+<h1 class="title">{% translate 'New note' %}</h1>
+
+<div class="tabs is-boxed">
+    <ul>
+        <li class="is-active"><a>{% translate 'Edit' %}</a></li>
+    </ul>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <div class="control">
+        <input class="button is-primary" type="submit" value="{% translate 'Save' %}">
+    </div>
+</form>
+{% endblock content %}

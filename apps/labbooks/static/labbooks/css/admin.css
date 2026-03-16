@@ -1,0 +1,7 @@
+.toto {
+    all: initial;
+}
+
+.toto * {
+    all: initial;
+}
